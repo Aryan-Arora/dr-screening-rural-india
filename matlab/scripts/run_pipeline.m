@@ -19,6 +19,7 @@ addpath(fullfile(thisDir, '..', 'modules', 'module1_quality'));
 addpath(fullfile(thisDir, '..', 'modules', 'module2_segmentation'));
 addpath(fullfile(thisDir, '..', 'modules', 'module3_grading'));
 addpath(fullfile(thisDir, '..', 'modules', 'module4_explainability'));
+addpath(fullfile(thisDir, '..', 'modules', 'module6_vascular_risk'));
 
 if ~exist(outputDir, 'dir')
     mkdir(outputDir);
@@ -30,6 +31,11 @@ result.severity = [];
 result.lesions = [];
 result.images = struct('enhanced_url', [], 'segmentation_overlay_url', [], 'gradcam_url', []);
 result.report_url = [];
+% Module 6 side-pipeline (independent of DR grading, see assessVascularRisk.m):
+% not part of the PRD's original fixed contract, added as an extra
+% top-level field so it can't break any consumer parsing the original
+% fields -- null until/unless Module 2's vessel/disc segmentation succeeds.
+result.vascular_risk = [];
 
 img = imread(inputImagePath);
 
@@ -89,6 +95,19 @@ try
         'hemorrhages', seg.hemorrhages.count, ...
         'exudates', seg.exudates.count, ...
         'neovascularization', []);
+
+    % ---- Module 6: vascular/cerebrovascular risk (parallel side-pipeline) ----
+    % Independent of DR grading below -- reads Module 2's vessel mask and
+    % disc geometry directly, on the ORIGINAL image (same reasoning as
+    % everything else in this file: see the enhancement note above). A
+    % failure here should never take down DR severity grading or vice
+    % versa, hence its own try/catch.
+    try
+        vr = assessVascularRisk(img, seg.vessels.mask, seg.disc.center, seg.disc.radius);
+        result.vascular_risk = vr;
+    catch vascErr
+        fprintf('run_pipeline: vascular risk assessment failed, continuing without it: %s\n', vascErr.message);
+    end
 catch segErr
     fprintf('run_pipeline: segmentation failed, continuing without it: %s\n', segErr.message);
 end

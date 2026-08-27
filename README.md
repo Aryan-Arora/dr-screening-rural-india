@@ -13,6 +13,7 @@ matlab/
     module3_grading/        3-backbone ensemble trained on full dataset; PRD targets met with real margin
     module4_explainability/ Grad-CAM + lesion correlation done; 4-2-1 rule/calibration/report remain
     module5_simulink/       Queueing sim built + swept; found AI capacity is the real bottleneck
+    module6_vascular_risk/  Parallel side-pipeline: AVR/tortuosity/fractal-dim -> stroke+dementia risk flag (not DR, not Alzheimer's)
   scripts/             Demo / test entry points
   data/sample_images/  Drop test fundus images here (gitignored)
 bridge-server/         Node/Express bridge between React frontend and MATLAB
@@ -468,6 +469,82 @@ compute capacity (parallel processing slots / faster hardware) over
 ophthalmologist headcount — the opposite of where intuition might point
 first, and the kind of counter-intuitive, decision-relevant finding this
 simulation is supposed to produce.
+
+## Module 6 — Vascular/Cerebrovascular Risk (side-pipeline)
+
+A second, PARALLEL pipeline that runs alongside Modules 2-4's DR grading,
+both starting from the same Module 1 quality-gated, Module 2-segmented
+image. Where Modules 2-4 assess DR severity, Module 6 reads the same
+vessel mask and disc geometry to assess a DIFFERENT condition family:
+retinal vascular biomarkers linked in the literature to stroke and
+vascular dementia risk. Wired into `run_pipeline.m` as its own try/catch
+block (`result.vascular_risk`) so a failure here can never take down DR
+grading or vice versa.
+
+- `classifyVesselSegments.m` — skeletonizes the vessel mask, splits at
+  branch points into individual segments, and heuristically labels each
+  artery- or vein-like via a per-image relative color-score split
+  (arterioles read lighter/more orange-red than venules — classic
+  pre-deep-learning AVR literature). **Genuinely hard, unvalidated**: no
+  ground-truth artery/vein annotation was available to check against
+  (INSPIRE-AVR/AVRDB exist for exactly this and are the natural next
+  step); this only separates independent short segments, not full
+  artery/vein trees.
+- `computeAVR.m` — central retinal artery/vein equivalents (CRAE/CRVE)
+  and their ratio, using the standard "zone B" measurement annulus and
+  Knudtson et al.'s 2003 combining formula.
+- `computeTortuosity.m` — arc-chord tortuosity index per vessel type.
+  **Real bug found and fixed via end-to-end testing**: a few short
+  branch-to-branch segments have near-degenerate chord lengths (endpoints
+  coincidentally close despite a longer skeleton path — a small loop
+  artifact from branch-point removal, not real curvature), producing
+  enormous outlier ratios (>6.0 on one segment vs. a same-image median of
+  ~0.4) that swamped a plain mean. Fixed with median aggregation plus a
+  minimum-chord-length floor; post-fix values on both real test images
+  landed at a plausible 0.08-0.10.
+- `computeFractalDimension.m` — classic box-counting fractal dimension of
+  the vessel network in a disc-centered ROI. Real values on both test
+  images (~1.36-1.40) ran below the commonly-cited ~1.4-1.7 "healthy"
+  range — found to be a legitimate ROI-size effect (that range is usually
+  measured over the whole fundus image, not a smaller disc-centered
+  window), documented in the code rather than papered over by re-guessing
+  a threshold off two samples.
+- `classifyHypertensiveRetinopathy.m` — grades ONLY the generalized-
+  arteriolar-narrowing component (AVR-based, grade 0-2) of real
+  hypertensive retinopathy staging. **Explicitly scoped down**: the full
+  clinical Keith-Wagener-Barker/Scheie scale also needs focal narrowing,
+  AV nicking, and hemorrhages/cotton-wool spots/papilledema for grades
+  3-4 — none of which this project has a validated detector for. Reusing
+  Module 2's DR-oriented hemorrhage/exudate detectors here was
+  deliberately NOT done, since DR and hypertensive lesion morphology
+  aren't the same finding clinically.
+- `computeCerebrovascularRiskScore.m` — unweighted-mean composite of the
+  three biomarkers above into a low/moderate/high screening flag.
+  **Scope stated plainly, twice, because it's easy to over-claim here**:
+  the literature link (reduced AVR, increased tortuosity, reduced fractal
+  dimension → elevated stroke AND vascular dementia risk, sharing the
+  same small-vessel-disease mechanism — ARIC, Rotterdam, Cardiovascular
+  Health Study, Cheung et al.) is real, but is population-level,
+  risk-factor-adjusted epidemiology, not a validated per-patient
+  predictor — reference midpoints are literature medians, not calibrated
+  local norms, and there's no outcome data in this project to calibrate
+  weights against. **This does NOT detect Alzheimer's disease** —
+  different (amyloid/tau, not vascular) mechanism, and the actual retinal
+  research for it needs OCT nerve-fiber-layer imaging or retinal amyloid
+  fluorescence, neither obtainable from a color fundus photo with
+  classical vessel-morphology CV. Not attempted, for the same reason
+  nothing else in this project ships without evidence behind it.
+- `assessVascularRisk.m` — orchestrates all of the above into one call,
+  `run_pipeline.m`'s Module 6 entry point.
+
+Verified end-to-end against both real sample images after the tortuosity
+fix: runs cleanly through `run_pipeline.m` on both, `vascular_risk`
+correctly reflects component-level unusability (e.g. `avr.usable: false`
+when zone B has too few classified veins) rather than crashing or
+fabricating a number, and both produced sane hypertensive-narrowing
+grades and a "moderate" cerebrovascular-risk category — plausible given
+neither test image is genuinely pathological on this axis, but not a
+substitute for validation against real hypertension/stroke outcome data.
 
 ## Test Frontend
 

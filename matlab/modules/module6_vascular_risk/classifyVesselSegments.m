@@ -49,7 +49,11 @@ MIN_SEGMENT_LENGTH = 10; % pixels; shorter fragments are mostly noise from the b
 segments = struct('pixelIdx', {}, 'endpoints', {}, 'chordLength', {}, ...
     'arcLength', {}, 'meanWidth', {}, 'colorScore', {}, 'distFromDisc', {}, 'label', {});
 
-distTransform = bwdist(~vesselMask);
+% bwdist has been observed to return single here (toolbox-version-
+% dependent -- its documented default is double) rather than double;
+% cast explicitly since strel() below requires double and silently
+% erroring on a class mismatch is worse than one extra cast.
+distTransform = double(bwdist(~vesselMask));
 red = double(img(:, :, 1));
 green = double(img(:, :, 2));
 
