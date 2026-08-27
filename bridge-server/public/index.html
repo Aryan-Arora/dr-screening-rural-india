@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DR Screening — Test Frontend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f5f1; --surface: #ffffff; --surface-2: #ebede7; --ink: #182420;
+    --muted: #5c6b63; --border: #d8ddd4; --accent: #245c52; --accent-soft: #dceae5;
+    --good: #0d7ba3; --good-soft: #ddeff5; --bad: #c1440e; --bad-soft: #fbe6dc;
+    --warn: #a8681f; --warn-soft: #f5e8d6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+  }
+  .page { max-width: 760px; margin: 0 auto; padding: 44px 24px 80px; }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px;
+    margin-bottom: 10px;
+  }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--accent); }
+  h1 {
+    font-family: "IBM Plex Sans Condensed", sans-serif; font-weight: 700;
+    font-size: 1.9rem; margin: 0 0 8px; letter-spacing: -0.01em;
+  }
+  p.dek { color: var(--muted); margin: 0 0 28px; line-height: 1.5; max-width: 60ch; }
+
+  .dropzone {
+    display: block; border: 2px dashed var(--border); border-radius: 14px; padding: 36px 24px;
+    text-align: center; cursor: pointer; background: var(--surface);
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .dropzone:hover, .dropzone.dragover { border-color: var(--accent); background: var(--accent-soft); }
+  .dropzone input { display: none; }
+  .dropzone-label {
+    font-family: "IBM Plex Mono", monospace; font-size: 0.82rem; color: var(--muted);
+  }
+  .dropzone-label b { color: var(--ink); }
+
+  .preview-row {
+    display: flex; align-items: center; gap: 16px; margin-top: 18px; display: none;
+  }
+  .preview-row.visible { display: flex; }
+  .preview-row img {
+    width: 84px; height: 84px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border);
+  }
+  .preview-name {
+    font-family: "IBM Plex Mono", monospace; font-size: 0.8rem; color: var(--ink); word-break: break-all;
+  }
+
+  button.analyze-btn {
+    margin-top: 20px; width: 100%; padding: 13px; border-radius: 10px; border: none;
+    background: var(--accent); color: white; font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: opacity 0.15s ease;
+  }
+  button.analyze-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  button.analyze-btn:not(:disabled):hover { opacity: 0.9; }
+
+  .status-line {
+    margin-top: 14px; font-family: "IBM Plex Mono", monospace; font-size: 0.8rem;
+    color: var(--muted); display: none;
+  }
+  .status-line.visible { display: block; }
+  .spinner {
+    display: inline-block; width: 12px; height: 12px; border: 2px solid var(--border);
+    border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite;
+    margin-right: 8px; vertical-align: -1px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error-box {
+    margin-top: 16px; padding: 14px 18px; background: var(--bad-soft); border: 1px solid var(--bad);
+    border-radius: 10px; color: var(--bad); font-size: 0.88rem; display: none;
+  }
+  .error-box.visible { display: block; }
+
+  .results { margin-top: 28px; display: none; }
+  .results.visible { display: block; }
+
+  .result-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    padding: 22px 24px; margin-bottom: 16px;
+  }
+  .result-head {
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;
+    flex-wrap: wrap; gap: 10px;
+  }
+  .result-head h2 {
+    font-family: "IBM Plex Sans Condensed", sans-serif; font-size: 1.1rem; margin: 0;
+  }
+  .chip {
+    font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; letter-spacing: 0.03em;
+    text-transform: uppercase; padding: 4px 11px; border-radius: 999px; font-weight: 600;
+  }
+  .chip-good { background: var(--good-soft); color: var(--good); }
+  .chip-bad { background: var(--bad-soft); color: var(--bad); }
+  .chip-neutral { background: var(--surface-2); color: var(--muted); }
+
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 14px;
+  }
+  .stat { font-family: "IBM Plex Mono", monospace; }
+  .stat-label { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+  .stat-value { font-size: 1.1rem; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  .reject-reason {
+    font-size: 0.88rem; color: var(--bad); line-height: 1.5; font-style: italic;
+  }
+
+  .image-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px;
+  }
+  .image-grid figure { margin: 0; }
+  .image-grid img { width: 100%; border-radius: 8px; aspect-ratio: 1/1; object-fit: cover; }
+  .image-grid figcaption {
+    font-family: "IBM Plex Mono", monospace; font-size: 0.64rem; color: var(--muted);
+    text-align: center; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.03em;
+  }
+
+  .raw-json {
+    margin-top: 16px; font-family: "IBM Plex Mono", monospace; font-size: 0.72rem;
+    background: var(--surface-2); border-radius: 8px; padding: 14px; overflow-x: auto;
+    white-space: pre; color: var(--muted); max-height: 260px; overflow-y: auto;
+  }
+  details summary {
+    font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; color: var(--muted);
+    cursor: pointer; margin-top: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="eyebrow">DR Screening Pipeline — Test Frontend</div>
+  <h1>Upload a fundus image</h1>
+  <p class="dek">
+    This is a minimal test harness for the bridge server, not the real product UI
+    (that's arriving separately). It hits the same <code>POST /api/analyze</code>
+    endpoint any real frontend would. Analysis takes 7-25 seconds depending on
+    whether the image passes the quality gate.
+  </p>
+
+  <label class="dropzone" id="dropzone">
+    <input type="file" id="fileInput" accept="image/png,image/jpeg">
+    <div class="dropzone-label"><b>Click to choose</b> or drag a fundus image here (JPEG/PNG)</div>
+  </label>
+
+  <div class="preview-row" id="previewRow">
+    <img id="previewImg" alt="Selected image preview">
+    <span class="preview-name" id="previewName"></span>
+  </div>
+
+  <button class="analyze-btn" id="analyzeBtn" disabled>Analyze image</button>
+  <div class="status-line" id="statusLine"></div>
+  <div class="error-box" id="errorBox"></div>
+
+  <div class="results" id="results"></div>
+</div>
+
+<script>
+const API_BASE = 'http://localhost:4000';
+let selectedFile = null;
+
+const dropzone = document.getElementById('dropzone');
+const fileInput = document.getElementById('fileInput');
+const previewRow = document.getElementById('previewRow');
+const previewImg = document.getElementById('previewImg');
+const previewName = document.getElementById('previewName');
+const analyzeBtn = document.getElementById('analyzeBtn');
+const statusLine = document.getElementById('statusLine');
+const errorBox = document.getElementById('errorBox');
+const results = document.getElementById('results');
+
+['dragover', 'dragleave', 'drop'].forEach(evt => {
+  dropzone.addEventListener(evt, e => {
+    e.preventDefault();
+    dropzone.classList.toggle('dragover', evt === 'dragover');
+  });
+});
+dropzone.addEventListener('drop', e => {
+  if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', () => {
+  if (fileInput.files.length) handleFile(fileInput.files[0]);
+});
+
+function handleFile(file) {
+  selectedFile = file;
+  previewImg.src = URL.createObjectURL(file);
+  previewName.textContent = file.name;
+  previewRow.classList.add('visible');
+  analyzeBtn.disabled = false;
+  results.classList.remove('visible');
+  errorBox.classList.remove('visible');
+}
+
+analyzeBtn.addEventListener('click', async () => {
+  if (!selectedFile) return;
+  analyzeBtn.disabled = true;
+  errorBox.classList.remove('visible');
+  results.classList.remove('visible');
+  statusLine.classList.add('visible');
+  statusLine.innerHTML = '<span class="spinner"></span>Running quality gate, segmentation, severity grading, and Grad-CAM — this can take up to 25 seconds...';
+
+  const formData = new FormData();
+  formData.append('image', selectedFile);
+
+  try {
+    const res = await fetch(`${API_BASE}/api/analyze`, { method: 'POST', body: formData });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || `Server returned ${res.status}`);
+    renderResults(data);
+  } catch (err) {
+    errorBox.textContent = `Couldn't reach the bridge server — is it running on ${API_BASE}? (${err.message})`;
+    errorBox.classList.add('visible');
+  } finally {
+    statusLine.classList.remove('visible');
+    analyzeBtn.disabled = false;
+  }
+});
+
+function renderResults(data) {
+  const qc = data.quality_check;
+  const isRejected = qc.status === 'rejected';
+
+  let html = `
+    <div class="result-card">
+      <div class="result-head">
+        <h2>Quality gate</h2>
+        <span class="chip ${isRejected ? 'chip-bad' : 'chip-good'}">${qc.status}</span>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-label">Focus</div><div class="stat-value">${qc.scores.focus.toFixed(2)}</div></div>
+        <div class="stat"><div class="stat-label">Illumination</div><div class="stat-value">${qc.scores.illumination.toFixed(2)}</div></div>
+        <div class="stat"><div class="stat-label">Field of view</div><div class="stat-value">${qc.scores.fov.toFixed(2)}</div></div>
+      </div>
+      ${isRejected ? `<p class="reject-reason">${qc.reason}</p><p style="color:var(--muted);font-size:0.85rem;">Pipeline stops here — no segmentation, lesion detection, severity grading, or Grad-CAM. This is correct behavior for an ungradable capture, not a failure.</p>` : ''}
+    </div>`;
+
+  if (!isRejected && data.severity) {
+    const sev = data.severity;
+    html += `
+      <div class="result-card">
+        <div class="result-head">
+          <h2>Severity (ICDR ${sev.icdr_level})</h2>
+          <span class="chip ${sev.referable ? 'chip-bad' : 'chip-good'}">${sev.referable ? 'Referable' : 'Not referable'}</span>
+        </div>
+        <div class="stat-grid">
+          <div class="stat"><div class="stat-label">Confidence</div><div class="stat-value">${(sev.confidence*100).toFixed(1)}%</div></div>
+          <div class="stat"><div class="stat-label">3-model agreement</div><div class="stat-value">${sev.ensemble_agreement ? 'Yes' : 'Split'}</div></div>
+          <div class="stat"><div class="stat-label">4-2-1 rule</div><div class="stat-value">${sev.rule_based_grade ?? 'n/a'}</div></div>
+        </div>
+        ${sev.needs_review ? `<p class="reject-reason" style="margin-top:14px;">${sev.review_reason}</p>` : ''}
+      </div>`;
+  }
+
+  if (!isRejected && data.lesions) {
+    const les = data.lesions;
+    html += `
+      <div class="result-card">
+        <div class="result-head">
+          <h2>Lesion detection</h2>
+          <span class="chip chip-neutral">unvalidated — classical CV</span>
+        </div>
+        <div class="stat-grid">
+          <div class="stat"><div class="stat-label">Microaneurysm-like</div><div class="stat-value">${les.microaneurysms}</div></div>
+          <div class="stat"><div class="stat-label">Hemorrhage-like</div><div class="stat-value">${les.hemorrhages}</div></div>
+          <div class="stat"><div class="stat-label">Exudate-like</div><div class="stat-value">${les.exudates}</div></div>
+        </div>
+      </div>`;
+  }
+
+  if (!isRejected && data.images && (data.images.enhanced_url || data.images.segmentation_overlay_url || data.images.gradcam_url)) {
+    html += `
+      <div class="result-card">
+        <div class="result-head"><h2>Generated images</h2></div>
+        <div class="image-grid">
+          ${data.images.enhanced_url ? `<figure><img src="${API_BASE}${data.images.enhanced_url}" alt="Enhanced"><figcaption>Enhanced</figcaption></figure>` : ''}
+          ${data.images.segmentation_overlay_url ? `<figure><img src="${API_BASE}${data.images.segmentation_overlay_url}" alt="Segmentation"><figcaption>Segmentation</figcaption></figure>` : ''}
+          ${data.images.gradcam_url ? `<figure><img src="${API_BASE}${data.images.gradcam_url}" alt="Grad-CAM"><figcaption>Grad-CAM</figcaption></figure>` : ''}
+        </div>
+      </div>`;
+  }
+
+  html += `<details><summary>Raw JSON response</summary><div class="raw-json">${JSON.stringify(data, null, 2)}</div></details>`;
+
+  results.innerHTML = html;
+  results.classList.add('visible');
+}
+</script>
+</body>
+</html>

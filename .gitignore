@@ -1,0 +1,23 @@
+# Sample/training images and trained model weights -- large, regenerable
+# from the download scripts in matlab/data/train_data/, not source.
+matlab/data/sample_images/
+matlab/data/train_data/images/
+matlab/data/train_data/images_aptos_only/
+matlab/data/train_data/trained_models/
+matlab/data/train_data/*.log
+matlab/data/train_data/*.csv
+
+# Simulink-generated build cache -- machine-specific, regenerated on sim()
+matlab/scripts/slprj/
+*.slxc
+
+# Bridge server runtime artifacts
+bridge-server/node_modules/
+bridge-server/uploads/*
+bridge-server/outputs/*
+!bridge-server/uploads/.gitkeep
+!bridge-server/outputs/.gitkeep
+bridge-server/server.log
+
+# macOS
+.DS_Store
