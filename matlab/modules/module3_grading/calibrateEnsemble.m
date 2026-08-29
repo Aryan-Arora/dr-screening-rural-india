@@ -1,11 +1,16 @@
-function calResult = calibrateEnsemble(dataDir, modelsDir)
-%CALIBRATEENSEMBLE Post-hoc temperature scaling for the 3-backbone
-%   ensemble, plus a re-swept referable-probability threshold to match.
-%   calResult = CALIBRATEENSEMBLE(dataDir, modelsDir) reuses the exact
-%   train/val/test split prepareDatastore.m produces (same fixed seed),
-%   fits one scalar temperature T on the validation set, then re-sweeps
-%   the referable threshold on the test set using T-scaled probabilities,
-%   and writes calibration.mat to modelsDir.
+function calResult = calibrateEnsemble(dataDir, modelsDir, backbones)
+%CALIBRATEENSEMBLE Post-hoc temperature scaling for the ensemble, plus a
+%   re-swept referable-probability threshold to match.
+%   calResult = CALIBRATEENSEMBLE(dataDir, modelsDir, backbones) reuses
+%   the exact train/val/test split prepareDatastore.m produces (same
+%   fixed seed), fits one scalar temperature T on the validation set,
+%   then re-sweeps the referable threshold on the test set using
+%   T-scaled probabilities, and writes calibration.mat to modelsDir.
+%   `backbones` is optional, defaults to the original PRD-specified 3;
+%   pass a longer cell array to calibrate a bigger ensemble instead
+%   (must match whatever list run_pipeline.m/ensembleGrade.m actually use
+%   -- calibration is specific to one particular ensemble's probability
+%   distribution, not portable across different backbone sets).
 %
 %   No retraining involved -- this only rescales the softmax outputs of
 %   the already-trained networks, so it runs in minutes, not hours.
@@ -18,10 +23,13 @@ function calResult = calibrateEnsemble(dataDir, modelsDir)
 %   already ignores. So log(P)/T is a valid, exact substitute for z/T
 %   here; no need to reach inside the networks for pre-softmax activations.
 
-backbones = {'efficientnetb0', 'resnet50', 'densenet201'};
+if nargin < 3 || isempty(backbones)
+    backbones = {'efficientnetb0', 'resnet50', 'densenet201'};
+end
+
 modelFiles = cellfun(@(n) fullfile(modelsDir, [n '_net.mat']), backbones, 'UniformOutput', false);
 if ~all(cellfun(@(f) exist(f, 'file') == 2, modelFiles))
-    error('calibrateEnsemble:missingModels', 'All 3 trained models must exist in %s first.', modelsDir);
+    error('calibrateEnsemble:missingModels', 'All %d trained models must exist in %s first.', numel(backbones), modelsDir);
 end
 
 addpath(fileparts(mfilename('fullpath')));

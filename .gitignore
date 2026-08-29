@@ -3,7 +3,13 @@
 matlab/data/sample_images/
 matlab/data/train_data/images/
 matlab/data/train_data/images_aptos_only/
+matlab/data/train_data/images_idrid/
+matlab/data/train_data/images_ddr/
+matlab/data/train_data/images_combined/
+matlab/data/train_data/images_aptos_retrain/
+matlab/data/train_data/ddr_labels/
 matlab/data/train_data/trained_models/
+matlab/data/train_data/trained_models_aptos_idrid_ddr_experiment/
 matlab/data/train_data/*.log
 matlab/data/train_data/*.csv
 

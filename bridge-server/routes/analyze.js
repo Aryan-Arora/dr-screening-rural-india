@@ -69,7 +69,14 @@ router.post('/analyze', upload.single('image'), async (req, res) => {
     }
     result.report_url = result.report_url ? `/api/outputs/${jobId}/${result.report_url}` : null;
 
-    res.json(result);
+    // Overwrite MATLAB's raw result.json with the normalized version (real
+    // nulls instead of [], full /api/outputs/... image URLs) so a later
+    // direct fetch of this file (GET /api/outputs/:jobId/result.json,
+    // served statically) returns exactly what this response just did --
+    // used by the frontend's /screening/result/:id revisit page.
+    fs.writeFile(path.join(outputDir, 'result.json'), JSON.stringify({ ...result, jobId }), () => {});
+
+    res.json({ ...result, jobId });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
