@@ -21,6 +21,30 @@ export function Landing() {
     const context = gsap.context(() => {
       gsap.to('.hero-copy', { yPercent: -24, opacity: .2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } })
       gsap.from('.image-copy', { y: 70, opacity: 0, scrollTrigger: { trigger: '.image-story', start: 'top 72%', end: 'top 36%', scrub: true } })
+      // The big fixed background visual (covers the whole page) should
+      // stay present as ambient atmosphere for the sections further down
+      // -- it was only ever a problem in this ONE section, where it
+      // visually collided with the retina-frame's own content sitting
+      // right on top of it. So dip it down specifically while
+      // .image-story is in view, then bring it back up once past it,
+      // rather than switching it off for the rest of the page.
+      gsap.timeline({ scrollTrigger: { trigger: '.image-story', start: 'top bottom', end: 'bottom top', scrub: true } })
+        .fromTo('.retinal-universe', { opacity: 1 }, { opacity: .12, ease: 'none' })
+        .to('.retinal-universe', { opacity: 1, ease: 'none' })
+      // A clean circular reveal, not a particle dissolve -- the compact
+      // visual underneath stays fully-formed the whole time (phase 0,
+      // never dissolves), and the FRAME itself opens up via clip-path as
+      // you scroll. This can't look glitchy the way overlapping particle
+      // fields can (the frame's own scatter was visibly colliding with
+      // the fixed full-page hero visual behind it) -- it's a single,
+      // unambiguous wipe. The scanline still sweeps once across the
+      // revealed image as confirmation/detail, same as before.
+      gsap.fromTo('.retina-frame',
+        { clipPath: 'circle(0% at 50% 50%)' },
+        { clipPath: 'circle(75% at 50% 50%)', ease: 'none', scrollTrigger: { trigger: '.image-story', start: 'top 68%', end: 'top 30%', scrub: true } })
+      gsap.fromTo('.scanline',
+        { left: '6%', opacity: 0 },
+        { left: '94%', opacity: 1, ease: 'none', scrollTrigger: { trigger: '.image-story', start: 'top 55%', end: 'top 20%', scrub: true } })
       gsap.utils.toArray<HTMLElement>('.chapter').forEach((chapter) => gsap.fromTo(chapter.querySelector('.chapter-content'), { y: 70, opacity: .16 }, { y: 0, opacity: 1, scrollTrigger: { trigger: chapter, start: 'top 72%', end: 'top 28%', scrub: true } }))
       gsap.to('.severity-dot', { left: '52%', ease: 'none', scrollTrigger: { trigger: '.severity', start: 'top 78%', end: 'center center', scrub: true } })
     }, page)
