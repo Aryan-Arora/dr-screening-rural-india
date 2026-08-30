@@ -90,7 +90,16 @@ export function RetinalVisual({ className = '', compact = false, story = false }
 
     let width = 1, height = 1, ratio = 1, frame = 0
     let pointer = { x: -9999, y: -9999, active: false }
-    const resize = () => { const rect = host.getBoundingClientRect(); width = rect.width; height = rect.height; ratio = Math.min(devicePixelRatio, 2); canvas.width = Math.ceil(width * ratio); canvas.height = Math.ceil(height * ratio); canvas.style.width = `${width}px`; canvas.style.height = `${height}px`; ctx.setTransform(ratio, 0, 0, ratio, 0, 0) }
+    // offsetWidth/offsetHeight, not getBoundingClientRect() -- the host
+    // carries a CSS `transform: scale(...)` inside .retina-frame and the
+    // compact lesion/explain visuals, and getBoundingClientRect() reports
+    // that *post*-transform box. Sizing the canvas off it, then having the
+    // very same ancestor transform apply a second time to the canvas as its
+    // descendant, compounds the scale -- the canvas renders ~1.25x too big
+    // from its center and its content is pushed outside the frame's
+    // overflow:hidden clip. offsetWidth/offsetHeight report the untransformed
+    // layout box, so the canvas is sized once and scaled once.
+    const resize = () => { width = host.offsetWidth; height = host.offsetHeight; ratio = Math.min(devicePixelRatio, 2); canvas.width = Math.ceil(width * ratio); canvas.height = Math.ceil(height * ratio); canvas.style.width = `${width}px`; canvas.style.height = `${height}px`; ctx.setTransform(ratio, 0, 0, ratio, 0, 0) }
     const pointerMove = (event: PointerEvent) => { const rect = host.getBoundingClientRect(); pointer = { x: event.clientX - rect.left, y: event.clientY - rect.top, active: document.body.classList.contains('retinal-lens-enabled') && event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom } }
     const progress = () => { if (!story) return Number.parseFloat(getComputedStyle(host).getPropertyValue('--retina-phase')) || 0; const landing = host.closest('.landing') as HTMLElement | null; return landing ? clamp((-landing.getBoundingClientRect().top) / Math.max(1, landing.offsetHeight - innerHeight)) : 0 }
     const target = (p: Particle, stage: number) => {
@@ -178,8 +187,17 @@ export function RetinalVisual({ className = '', compact = false, story = false }
       }
       ctx.globalAlpha = 1; frame = requestAnimationFrame(draw)
     }
-    resize(); addEventListener('resize', resize); addEventListener('pointermove', pointerMove, { passive: true }); frame = requestAnimationFrame(draw)
-    return () => { cancelAnimationFrame(frame); removeEventListener('resize', resize); removeEventListener('pointermove', pointerMove) }
+    // A window resize listener alone misses container size changes that
+    // aren't driven by the viewport -- web font swaps, grid tracks settling,
+    // sibling content loading -- any of which can leave the canvas's cached
+    // buffer size mismatched with its host's actual box, drawing the scene
+    // offset from where the host now sits. A ResizeObserver on the host
+    // itself catches all of those, not just viewport resizes.
+    resize()
+    const observer = new ResizeObserver(resize)
+    observer.observe(host)
+    addEventListener('pointermove', pointerMove, { passive: true }); frame = requestAnimationFrame(draw)
+    return () => { cancelAnimationFrame(frame); observer.disconnect(); removeEventListener('pointermove', pointerMove) }
   }, [compact, story])
   return <div ref={hostRef} className={`retinal-visual ${className}`}><canvas ref={canvasRef} /></div>
 }

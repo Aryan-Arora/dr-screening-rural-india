@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
-import { UploadCloud, AlertTriangle, Loader2 } from 'lucide-react'
+import { ScanEye, AlertTriangle, Loader2 } from 'lucide-react'
 import { analyzeImage, ApiError } from '../services/api'
 import { ResultDisplay } from '../components/screening/ResultDisplay'
 import { AnalyzingStatus } from '../components/screening/AnalyzingStatus'
@@ -102,7 +102,13 @@ export function Screening() {
             <img src={previewUrl} alt="Selected fundus photo" className="dropzone-preview" />
           ) : (
             <>
-              <UploadCloud size={36} />
+              {/* Corner brackets read as a capture viewfinder rather than a
+                  generic form dropzone -- a deliberate nod to what's actually
+                  being framed here (a fundus photo), not stock upload-icon
+                  styling. */}
+              <span className="dropzone-corner tl" /><span className="dropzone-corner tr" />
+              <span className="dropzone-corner bl" /><span className="dropzone-corner br" />
+              <ScanEye size={34} strokeWidth={1.3} />
               <p>DRAG A FUNDUS PHOTO HERE, OR CLICK TO BROWSE</p>
               <span className="dropzone-hint">JPEG or PNG, up to 25MB</span>
             </>
