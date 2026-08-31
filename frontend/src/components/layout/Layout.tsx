@@ -21,7 +21,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [open, setOpen] = useState(false)
   const reduceMotion = useReducedMotion()
   // Critically damped by default (Apple's house style for non-momentum UI:
-  // damping 1.0 reads as graceful, not distracting) -- this indicator never
+  // damping 1.0 reads as graceful, not distracting) — this indicator never
   // carries gesture velocity, so it never earns the bounce reserved for
   // flicks/drags.
   const indicatorSpring = { type: 'spring' as const, damping: 1, duration: reduceMotion ? 0 : 0.35 }

@@ -1,6 +1,6 @@
 /**
  * The green/amber/coral status-tag color coding is used consistently
- * across ResultDisplay, Benchmarks, and Architecture -- but nowhere
+ * across ResultDisplay, Benchmarks, and Architecture — but nowhere
  * explains itself. This makes the convention explicit wherever tags
  * first appear on a page, rather than leaving a first-time viewer
  * (a judge) to infer it from context.

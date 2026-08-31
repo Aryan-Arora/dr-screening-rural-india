@@ -1,7 +1,7 @@
 /**
  * Real output from module5_sweep_results.mat (Module 5's Simulink
  * discrete-event clinic simulation), extracted directly from the .mat
- * file -- not estimated or hand-typed. Full sweep has 30 rows (5 annual
+ * file — not estimated or hand-typed. Full sweep has 30 rows (5 annual
  * volumes x 2 AI capacities x 3 doctor counts); this is the specific
  * slice (numDoctors=1, aiCapacity 1 vs. 2) that produces the headline
  * finding documented in the project README: AI processing capacity, not

@@ -11,8 +11,8 @@ const STAGES = [
 /**
  * Cycles through the pipeline's real stage names while waiting on the
  * single blocking /api/analyze call. Deliberately NOT wired to real
- * backend progress -- there's no server-sent progress channel, just one
- * request/response -- so this never claims a specific stage is "now
+ * backend progress — there's no server-sent progress channel, just one
+ * request/response — so this never claims a specific stage is "now
  * running," only rotates through what the pipeline is doing broadly
  * during the wait. An indeterminate bar, not a fake percentage.
  */

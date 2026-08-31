@@ -1,5 +1,5 @@
 /* Space Grotesk + Space Mono are genuine siblings (both Colophon Foundry,
-   designed as a display/mono pair) -- swapped in for DM Mono so the
+   designed as a display/mono pair) — swapped in for DM Mono so the
    technical/label typeface reads as an intentional pairing with the
    display face, not an arbitrary utility monospace. Inter stays for body
    copy, same reasoning (widely-proven, not a "default" tell on its own). */
@@ -10,7 +10,7 @@
 .retinal-cursor{position:fixed;top:0;left:0;width:104px;height:104px;border-radius:50%;pointer-events:none;z-index:100;opacity:0;will-change:transform,opacity;transition:opacity .28s ease;background:radial-gradient(circle at 36% 29%,rgba(255,255,255,.96) 0 2%,rgba(255,255,255,.28) 19%,rgba(255,255,255,.09) 53%,rgba(255,255,255,.24) 100%);border:1px solid rgba(255,255,255,.86);box-shadow:inset 0 0 0 8px rgba(255,255,255,.045),inset 0 0 25px rgba(255,255,255,.16),0 10px 32px rgba(0,0,0,.32),0 0 20px rgba(230,255,244,.18);backdrop-filter:blur(1.5px);mix-blend-mode:screen}.retinal-cursor:before{content:'';position:absolute;inset:9px;border-radius:inherit;border:1px solid rgba(255,255,255,.2)}.retinal-cursor i{position:absolute;top:15px;left:23px;width:27px;height:12px;border-radius:50%;background:linear-gradient(110deg,rgba(255,255,255,.68),transparent);filter:blur(2px);transform:rotate(-26deg)}.retinal-cursor--visible{opacity:1}.retinal-cursor--interactive{box-shadow:inset 0 0 0 8px rgba(255,255,255,.07),inset 0 0 29px rgba(255,255,255,.23),0 12px 37px rgba(0,0,0,.36),0 0 28px rgba(237,255,247,.28)}
 @media (hover:hover) and (pointer:fine){body.retinal-lens-enabled,body.retinal-lens-enabled *{cursor:none!important}}
 @media (hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.retinal-cursor{display:none}}
-:root{font-family:Inter,sans-serif;color:#e8f1ed;background:#030907;font-synthesis:none;text-rendering:optimizeLegibility}*{box-sizing:border-box}html{background:#030907;scroll-behavior:smooth}body{margin:0;overflow-x:hidden;background:#030907}button,a{font:inherit}a{color:inherit;text-decoration:none}.app-shell{min-height:100svh;overflow:clip;background:radial-gradient(circle at 72% 0%,#0c2d24 0,transparent 34%),#030907}.app-shell:before{content:'';pointer-events:none;position:fixed;inset:0;z-index:1;opacity:.13;background-image:linear-gradient(rgba(142,220,183,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(142,220,183,.18) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(#000,transparent 82%)}.site-header{position:fixed;inset:0 0 auto;z-index:20;mix-blend-mode:screen}.site-header-inner{height:92px;max-width:1680px;margin:auto;padding:0 4vw;display:flex;align-items:center;justify-content:space-between}.site-header a{display:flex;align-items:center;gap:12px}.site-header a>div:first-child{width:29px;height:29px;border-radius:100%;border:1px solid rgba(181,255,213,.55);display:grid;place-items:center}.site-header a>div:first-child span{width:6px;height:6px;border-radius:100%;background:#b4ffd5;box-shadow:0 0 12px #b4ffd5}.font-display{font-family:'Space Grotesk',sans-serif}.menu-button{border:0;padding:7px 0;background:none;color:#effff6;cursor:pointer;font:600 13px 'Space Grotesk',sans-serif;letter-spacing:.03em}.menu-button span{margin-left:10px;color:#a1f1c5;font-size:16px}.landing{position:relative}.hero{height:max(760px,100svh);min-height:100svh;position:relative;display:flex;align-items:end;padding:10vh 7vw;isolation:isolate}.hero:after{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 67% 48%,transparent 0 14%,#030907 56%,#030907 100%);pointer-events:none}.hero-copy{position:relative;z-index:3;max-width:690px;padding-bottom:6vh}.eyebrow{margin:0 0 18px;color:#a9ecc4;font:700 11px 'Space Mono',monospace;letter-spacing:.16em}h1,h2,h3{margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#f0f8f2;letter-spacing:-.075em}h1{font-size:clamp(4.2rem,9.1vw,10.5rem);line-height:.82}h2{font-size:clamp(3.5rem,7vw,8.2rem);line-height:.84}h3{font-size:clamp(2rem,4.1vw,4.6rem);line-height:.95}em{font-weight:400;font-style:normal;color:#9ff0bf;text-shadow:0 0 45px rgba(115,238,169,.16)}.hero-description,.body-copy{margin:31px 0 0;max-width:390px;color:#a5b7ae;font-size:15px;line-height:1.65}.line-link{margin-top:31px;display:inline-flex;align-items:center;gap:11px;padding-bottom:9px;border-bottom:1.5px solid #a9ebc6;color:#e9fff2;font:600 14px 'Space Grotesk',sans-serif;letter-spacing:.005em;transition:gap .3s ease,color .3s ease,border-color .3s ease}.line-link:hover{gap:18px;color:#9ff0bf}.retinal-visual{--retina-phase:0;position:relative}.retinal-visual canvas{display:block;width:100%;height:100%}.hero-retina{position:absolute;right:-3vw;top:5vh;width:min(70vw,960px);height:min(82vw,960px);z-index:0;filter:saturate(1.08)}.scroll-cue{position:absolute;right:5vw;bottom:7vh;display:flex;align-items:center;gap:8px;transform:rotate(90deg);transform-origin:right center;color:#769687;font:10px 'Space Mono',monospace;letter-spacing:.16em}.section-shell{max-width:1520px;margin:auto;padding-inline:7vw}.image-story{min-height:105svh;display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:6vw;padding-top:9rem;padding-bottom:9rem}.retina-frame{position:relative;aspect-ratio:1.1;overflow:hidden;border:1px solid rgba(166,237,195,.22);border-radius:50% 50% 47% 53%;background:radial-gradient(circle,#0a3327,#04120e 65%);box-shadow:0 0 100px rgba(29,153,106,.11)}.retina-frame .retinal-visual{width:100%;height:100%;transform:scale(1.25)}/* left/opacity now driven by GSAP ScrollTrigger (Landing.tsx) -- a single
+:root{font-family:Inter,sans-serif;color:#e8f1ed;background:#030907;font-synthesis:none;text-rendering:optimizeLegibility}*{box-sizing:border-box}html{background:#030907;scroll-behavior:smooth}body{margin:0;overflow-x:hidden;background:#030907}button,a{font:inherit}a{color:inherit;text-decoration:none}.app-shell{min-height:100svh;overflow:clip;background:radial-gradient(circle at 72% 0%,#0c2d24 0,transparent 34%),#030907}.app-shell:before{content:'';pointer-events:none;position:fixed;inset:0;z-index:1;opacity:.13;background-image:linear-gradient(rgba(142,220,183,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(142,220,183,.18) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(#000,transparent 82%)}.site-header{position:fixed;inset:0 0 auto;z-index:20;mix-blend-mode:screen}.site-header-inner{height:92px;max-width:1680px;margin:auto;padding:0 4vw;display:flex;align-items:center;justify-content:space-between}.site-header a{display:flex;align-items:center;gap:12px}.site-header a>div:first-child{width:29px;height:29px;border-radius:100%;border:1px solid rgba(181,255,213,.55);display:grid;place-items:center}.site-header a>div:first-child span{width:6px;height:6px;border-radius:100%;background:#b4ffd5;box-shadow:0 0 12px #b4ffd5}.font-display{font-family:'Space Grotesk',sans-serif}.menu-button{border:0;padding:7px 0;background:none;color:#effff6;cursor:pointer;font:600 13px 'Space Grotesk',sans-serif;letter-spacing:.03em}.menu-button span{margin-left:10px;color:#a1f1c5;font-size:16px}.landing{position:relative}.hero{height:max(760px,100svh);min-height:100svh;position:relative;display:flex;align-items:end;padding:10vh 7vw;isolation:isolate}.hero:after{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 67% 48%,transparent 0 14%,#030907 56%,#030907 100%);pointer-events:none}.hero-copy{position:relative;z-index:3;max-width:690px;padding-bottom:6vh}.eyebrow{margin:0 0 18px;color:#a9ecc4;font:700 11px 'Space Mono',monospace;letter-spacing:.16em}h1,h2,h3{margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#f0f8f2;letter-spacing:-.075em}h1{font-size:clamp(4.2rem,9.1vw,10.5rem);line-height:.82}h2{font-size:clamp(3.5rem,7vw,8.2rem);line-height:.84}h3{font-size:clamp(2rem,4.1vw,4.6rem);line-height:.95}em{font-weight:400;font-style:normal;color:#9ff0bf;text-shadow:0 0 45px rgba(115,238,169,.16)}.hero-description,.body-copy{margin:31px 0 0;max-width:390px;color:#a5b7ae;font-size:15px;line-height:1.65}.line-link{margin-top:31px;display:inline-flex;align-items:center;gap:11px;padding-bottom:9px;border-bottom:1.5px solid #a9ebc6;color:#e9fff2;font:600 14px 'Space Grotesk',sans-serif;letter-spacing:.005em;transition:gap .3s ease,color .3s ease,border-color .3s ease}.line-link:hover{gap:18px;color:#9ff0bf}.retinal-visual{--retina-phase:0;position:relative}.retinal-visual canvas{display:block;width:100%;height:100%}.hero-retina{position:absolute;right:-3vw;top:5vh;width:min(70vw,960px);height:min(82vw,960px);z-index:0;filter:saturate(1.08)}.scroll-cue{position:absolute;right:5vw;bottom:7vh;display:flex;align-items:center;gap:8px;transform:rotate(90deg);transform-origin:right center;color:#769687;font:10px 'Space Mono',monospace;letter-spacing:.16em}.section-shell{max-width:1520px;margin:auto;padding-inline:7vw}.image-story{min-height:105svh;display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:6vw;padding-top:9rem;padding-bottom:9rem}.retina-frame{position:relative;aspect-ratio:1.1;overflow:hidden;border:1px solid rgba(166,237,195,.22);border-radius:50% 50% 47% 53%;background:radial-gradient(circle,#0a3327,#04120e 65%);box-shadow:0 0 100px rgba(29,153,106,.11)}.retina-frame .retinal-visual{width:100%;height:100%;transform:scale(1.25)}/* left/opacity now driven by GSAP ScrollTrigger (Landing.tsx) — a single
    deliberate sweep synced to scrolling through this section, replacing an
    infinite ambient loop that ran regardless of whether anyone was even
    looking at it. */
@@ -19,7 +19,7 @@
 .flow-node:hover{border-color:rgba(255,183,107,.7);transform:translateX(5px);box-shadow:0 4px 26px rgba(0,0,0,.32),inset 0 0 26px rgba(227,140,60,.12)}
 /* Each node reads as a small optic disc: a radial glow standing in for the
    disc itself, ringed the way the real fundus renders it, rather than a
-   generic numbered badge -- ties the chart back to the retina motif instead
+   generic numbered badge — ties the chart back to the retina motif instead
    of looking like a bolted-on generic UI component. */
 .flow-index{position:relative;width:22px;height:22px;flex-shrink:0;border-radius:50%;background:radial-gradient(circle at 38% 34%,#fff0ad,#ffd45c 46%,#c96513 82%);box-shadow:0 0 14px rgba(255,180,60,.55),inset 0 0 6px rgba(120,50,10,.4)}
 .flow-index:before{content:'';position:absolute;inset:-5px;border-radius:50%;border:1px dashed rgba(255,183,107,.4)}
@@ -44,7 +44,7 @@
 
 /* --- Screening page --- */
 .screening-page{padding-top:11rem;padding-bottom:8rem;min-height:100svh}
-/* A viewfinder, not a generic file-upload dropzone -- corner brackets
+/* A viewfinder, not a generic file-upload dropzone — corner brackets
    frame the capture area the way a camera would, and a slow scanning
    sweep implies the surface is actively watching for a photo, rather
    than sitting there as an inert dashed-border form control. */
@@ -72,10 +72,23 @@
 .result-banner--error{background:rgba(233,109,94,.1);border:1px solid rgba(233,109,94,.4);color:#f2a89c}
 .result-banner--warning{background:rgba(240,204,123,.1);border:1px solid rgba(240,204,123,.4);color:#f0cc7b;margin-top:12px}
 .result-grid{margin-top:3rem;display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
-.result-card{border:1px solid rgba(177,242,204,.18);border-radius:16px;padding:1.75rem;background:rgba(255,255,255,.015)}
+/* Each result card carries its own category accent (a top edge + a faint
+   tint) rather than every card in the grid sharing one identical flat
+   border — the uniform-rounded-rect-with-1px-border look is the single
+   most common "AI-generated dashboard" tell, and there's real category
+   structure here (quality/severity/lesion/vascular/images) worth making
+   visible at a glance instead of flattening it into sameness. */
+.result-card{position:relative;border:1px solid rgba(177,242,204,.14);border-top:none;border-radius:16px;padding:1.75rem;padding-top:calc(1.75rem + 3px);background:rgba(255,255,255,.015);overflow:hidden}
+.result-card:before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,#5ee099)}
+.result-card:after{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(180deg,color-mix(in srgb,var(--card-accent,#5ee099) 10%,transparent),transparent);pointer-events:none}
+.result-card--quality{--card-accent:#5ee099}
+.result-card--severity{--card-accent:#e6b35e}
+.result-card--lesion{--card-accent:#e96657}
+.result-card--vascular{--card-accent:#66ceff}
+.result-card--images{--card-accent:#9c8cf0}
 .result-card--wide{grid-column:1/-1}
-.result-card-title{display:flex;align-items:center;gap:10px;margin:0 0 1rem;font:700 11px 'Space Mono',monospace;letter-spacing:.14em;color:#d9ffea}
-.status-tag{padding:3px 10px;border-radius:100px;font-size:10px;letter-spacing:.1em}
+.result-card-title{display:flex;align-items:center;gap:10px;margin:0 0 1rem;font:700 13px 'Space Mono',monospace;letter-spacing:.1em;color:#d9ffea}
+.status-tag{padding:4px 12px;border-radius:100px;font:700 11px 'Space Mono',monospace;letter-spacing:.08em}
 .status-tag--accepted{background:rgba(94,221,153,.15);color:#8ff0b6}
 .status-tag--enhanced{background:rgba(240,204,123,.15);color:#f0cc7b}
 .status-tag--rejected{background:rgba(233,109,94,.15);color:#f2a89c}
@@ -83,10 +96,11 @@
 .status-tag--nonreferable{background:rgba(94,221,153,.15);color:#8ff0b6;margin-left:12px}
 .severity-headline{font:500 1.6rem 'Space Grotesk',sans-serif;color:#f0f8f2;display:flex;align-items:center}
 .score-list{display:grid;gap:8px;margin:0}
-.score-list div{display:flex;justify-content:space-between;font:11px 'Space Mono',monospace;color:#a5b7ae}
+.score-list div{display:flex;align-items:baseline;gap:8px;font:13px 'Space Mono',monospace;color:#b7c8bd}
+.score-list dt{flex:1;border-bottom:1px dotted rgba(165,183,174,.3);padding-bottom:3px}
 .score-list dd{margin:0;color:#e8f1ed}
 .not-available{color:#698275;font-style:italic}
-.caveat{margin-top:14px;font-size:11px;color:#698275;line-height:1.6}
+.caveat{margin-top:14px;font-size:13px;color:#8ba396;line-height:1.6}
 .risk-low{color:#8ff0b6}
 .risk-moderate{color:#f0cc7b}
 .risk-high{color:#f2a89c}
@@ -94,13 +108,18 @@
 .image-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .result-image{position:relative;border-radius:12px;overflow:hidden;background:#061b14;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
 .result-image img{width:100%;height:100%;object-fit:cover}
-.result-image-empty{color:#698275;font:10px 'Space Mono',monospace}
+.result-image-empty{color:#8ba396;font:12px 'Space Mono',monospace}
 @media(max-width:760px){.result-grid{grid-template-columns:1fr}.image-row{grid-template-columns:1fr}}
 
 /* --- Cases page --- */
 .cases-page{padding-top:11rem;padding-bottom:8rem;min-height:100svh}
-.cases-list{display:grid;gap:4rem;margin:3rem 0 4rem}
-.case-block{border-top:1px solid rgba(177,242,204,.15);padding-top:2.5rem}
+.cases-list{display:grid;gap:2.5rem;margin:3rem 0 4rem}
+.case-block{border:1px solid rgba(177,242,204,.14);border-radius:20px;padding:2.25rem 2.25rem 2.5rem;background:linear-gradient(180deg,rgba(158,229,186,.03),transparent 20%)}
+.case-block-header{display:flex;gap:20px;margin-bottom:.5rem}
+.case-number{flex-shrink:0;color:rgba(170,236,196,.4);font:400 2.4rem/1 'Space Grotesk',sans-serif;letter-spacing:-.04em}
+.case-block-heading{flex:1;min-width:0}
+.case-title-row{display:flex;align-items:center;flex-wrap:wrap;gap:14px}
+.case-title-row h3{font-size:clamp(1.4rem,2.4vw,1.9rem)}
 .case-block-header h3{font:500 1.8rem 'Space Grotesk',sans-serif;color:#f0f8f2;margin-bottom:.5rem}
 .case-block-header .body-copy{max-width:640px}
 .case-block .result-grid{margin-top:2rem}
@@ -108,49 +127,123 @@
 /* --- Benchmarks / Architecture / Simulation pages --- */
 .benchmarks-page,.architecture-page,.simulation-page{padding-top:11rem;padding-bottom:8rem;min-height:100svh}
 .bench-section{margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid rgba(177,242,204,.15)}
-.bench-targets{display:flex;gap:3rem;margin-top:1rem}
-.bench-targets div{display:flex;flex-direction:column}
-.bench-targets b{font:500 2.2rem 'Space Grotesk',sans-serif;color:#f0f8f2}
-.bench-targets span{font:10px 'Space Mono',monospace;letter-spacing:.1em;color:#a5b7ae;margin-top:4px}
-.bench-table{margin-top:1.25rem;border:1px solid rgba(177,242,204,.18);border-radius:14px;overflow:hidden}
-.bench-row{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;padding:14px 20px;font:12px 'Space Mono',monospace;color:#e8f1ed;border-bottom:1px solid rgba(177,242,204,.1)}
-.bench-row:last-child{border-bottom:none}
-.bench-row--head{color:#9cd9b8;letter-spacing:.08em;background:rgba(255,255,255,.02)}
-.bench-row--ensemble{background:rgba(94,221,153,.06);font-weight:600;color:#d9ffea}
-.bench-history{display:grid;gap:2rem;margin-top:1.5rem}
-.bench-history-item{display:grid;grid-template-columns:56px 1fr;gap:1.5rem}
-.bench-history-stage{font:500 2rem 'Space Grotesk',sans-serif;color:rgba(170,236,196,.4)}
-.bench-history-title{display:flex;align-items:center;gap:12px;font:700 13px 'Space Mono',monospace;letter-spacing:.08em;color:#f0f8f2;margin:0 0 8px}
+/* A callout, not a plain paragraph — this is the one sentence on the page
+   meant to be read even by someone skimming, so it gets the visual weight
+   to match (accent bar, larger serif-adjacent display type, stats pulled
+   out as chips) instead of sitting in body-copy at the same size as
+   everything else. */
+.finding-card{position:relative;max-width:760px;margin-top:1.5rem;padding:1.75rem 2rem;border:1px solid rgba(240,204,123,.22);border-left:3px solid #e6b35e;border-radius:4px 14px 14px 4px;background:linear-gradient(120deg,rgba(240,204,123,.07),transparent 60%)}
+.finding-text{margin:0;font:500 19px/1.7 'Space Grotesk',sans-serif;color:#f0f4f0;letter-spacing:.001em}
+.finding-takeaway{margin:1.25rem 0 0;padding-top:1.1rem;border-top:1px dashed rgba(240,204,123,.25);font-size:14px;line-height:1.7;color:#c3d4c8}
+.finding-takeaway b{color:#f0cc7b;font-weight:700}
+.stat-highlight{padding:1px 9px;border-radius:6px;font:700 .92em 'Space Mono',monospace;white-space:nowrap}
+.stat-highlight--rose{color:#ffb6a8;background:rgba(242,168,156,.14)}
+.stat-highlight--amber{color:#ffdc9c;background:rgba(240,204,123,.14)}
+.stat-highlight--mint{color:#a6f3c4;background:rgba(143,240,182,.14)}
+/* KPI achievement cards, not a plain target-threshold list — these two
+   numbers are the project's headline result (PRD targets cleared with real
+   margin), so they get the "we did a great job" treatment: a checkmark
+   verdict, a big number, and the target it beat shown right alongside it. */
+.kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:1.25rem}
+.kpi-card{position:relative;padding:1.5rem 1.75rem;border:1px solid rgba(94,221,153,.3);border-radius:16px;background:linear-gradient(135deg,rgba(94,221,153,.1),rgba(94,221,153,.015) 60%);overflow:hidden}
+.kpi-card:before{content:'';position:absolute;top:-40%;right:-20%;width:65%;height:140%;background:radial-gradient(circle,rgba(94,221,153,.16),transparent 70%);pointer-events:none}
+.kpi-card-head{display:flex;align-items:center;gap:7px;color:#8ff0b6;font:700 10px 'Space Mono',monospace;letter-spacing:.12em;margin-bottom:.9rem}
+.kpi-value{display:block;font:600 3.4rem/1 'Space Grotesk',sans-serif;color:#eafff2;letter-spacing:-.03em}
+.kpi-value small{font-size:1.7rem;color:#9ce7bb;font-weight:500}
+.kpi-label{display:block;margin-top:6px;color:#c3d9cb;font:14px 'Inter',sans-serif}
+.kpi-compare{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:1.1rem;padding-top:.9rem;border-top:1px dashed rgba(94,221,153,.25);font:11px 'Space Mono',monospace;letter-spacing:.06em;color:#8ba396}
+.kpi-delta{color:#8ff0b6;font-weight:700}
+@media(max-width:760px){.kpi-grid{grid-template-columns:1fr}}
+/* An actual bar chart, not a text table — proportional fills make the
+   ensemble's improvement over any single backbone visible at a glance
+   instead of requiring the reader to compare numeral strings column by
+   column. */
+.bench-chart{margin-top:1.5rem;padding:1.5rem 1.25rem .75rem;border:1px solid rgba(177,242,204,.16);border-radius:16px;background:rgba(255,255,255,.012)}
+/* A quiet informational note, distinct from the achievement-styled KPI/
+   finding callouts — this one is methodology detail, not a headline
+   result, so it reads as reference material rather than competing for the
+   same visual attention. */
+.info-note{margin-top:1.25rem;padding:1.25rem 1.5rem;border-left:2px solid rgba(165,183,174,.35);background:rgba(255,255,255,.014);border-radius:0 10px 10px 0}
+.info-note p{margin:0;font-size:13px;line-height:1.75;color:#a5b7ae}
+.info-note p+p{margin-top:.85rem}
+/* The training history reads as what it actually is — a sequence of
+   attempts with real outcomes, some of them dead ends — so it gets an
+   actual connected flowchart (a colored node + line per stage) instead of
+   a flat list, with the connecting line itself carrying the tone of the
+   stage it leads away from, so a green segment running into a red one
+   reads as "this is where it broke" at a glance, before reading a word of
+   the copy. */
+/* A horizontal scroller, not a vertical wall of text — each stage is a
+   card you flick through, arrows between them keep the sequence legible,
+   and the tone color still carries the same "this is where it broke /
+   recovered" signal as before, just per-card instead of per-line-segment. */
+/* No scroll-snap here — it fights programmatic scrollLeft writes (the
+   browser re-snaps to the nearest align point every frame), which silently
+   defeated the auto-scroll entirely: it does not fail, it just gets reset
+   to 0 before you can read the drift. Auto-scroll owns this container's
+   scroll behavior now. */
+.bench-flow-scroll{margin-top:1.75rem;overflow-x:auto;padding-bottom:1.25rem}
+.bench-flow-track{display:flex;align-items:stretch;width:max-content}
+.bench-flow-card{position:relative;width:300px;flex-shrink:0;padding:1.5rem 1.5rem 1.35rem;border:1px solid rgba(177,242,204,.16);border-top:3px solid var(--tone);border-radius:4px 14px 14px 4px;background:linear-gradient(160deg,var(--tone-soft),transparent 60%)}
+.bench-flow-card--good{--tone:#5ee099;--tone-soft:rgba(94,221,153,.14)}
+.bench-flow-card--bad{--tone:#e96657;--tone-soft:rgba(233,109,94,.14)}
+.bench-flow-card--warn,.bench-flow-card--pending{--tone:#e6b35e;--tone-soft:rgba(230,179,94,.14)}
+.bench-flow-card-head{display:flex;align-items:center;gap:10px;margin-bottom:.5rem}
+.bench-flow-dot{flex-shrink:0;width:9px;height:9px;border-radius:50%;background:var(--tone);box-shadow:0 0 8px var(--tone)}
+.bench-flow-stage{font:600 1.3rem 'Space Grotesk',sans-serif;color:rgba(240,248,242,.32);letter-spacing:-.02em}
+.bench-flow-card h4{margin:0 0 .65rem;font:600 1.05rem 'Space Grotesk',sans-serif;color:#f0f8f2}
+.bench-flow-card .body-copy{margin-top:.75rem;font-size:13.5px;line-height:1.65}
+.bench-flow-arrow{display:flex;align-items:center;justify-content:center;width:48px;flex-shrink:0;color:#5b7568}
+.scroll-hint{margin-top:.25rem;font:10px 'Space Mono',monospace;letter-spacing:.14em;color:#5b7568;text-align:center}
 .bench-verdict--good{background:rgba(94,221,153,.15);color:#8ff0b6}
 .bench-verdict--bad{background:rgba(233,109,94,.15);color:#f2a89c}
 .bench-verdict--pending,.bench-verdict--warn{background:rgba(240,204,123,.15);color:#f0cc7b}
-.bench-notes{margin:1rem 0 0;padding-left:1.2rem;display:grid;gap:12px;color:#a5b7ae;font-size:14px;line-height:1.7}
+/* A closing reference card, not a bare eyebrow + list — and real bullet
+   markers, since Tailwind's preflight strips native <ul> list-style
+   entirely, which is why these were rendering as unmarked lines before. */
+.notes-card{padding:1.75rem 2rem;border:1px solid rgba(177,242,204,.16);border-radius:16px;background:rgba(255,255,255,.014)}
+.notes-head{display:flex;align-items:center;gap:10px;margin-bottom:1.1rem;padding-bottom:1rem;border-bottom:1px solid rgba(177,242,204,.12);color:#8ff0b6}
+.notes-head .eyebrow{margin:0}
+.bench-notes{margin:0;padding:0;list-style:none;display:grid;gap:14px;color:#b7c8bd;font-size:14px;line-height:1.7}
+.bench-notes li{position:relative;padding-left:1.5rem}
+.bench-notes li:before{content:'';position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:#5ee099;box-shadow:0 0 6px rgba(94,221,153,.6)}
 .bench-notes code,.body-copy code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:4px;font-family:'Space Mono',monospace;font-size:.9em;color:#d9ffea}
 .arch-flow{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:1.5rem}
 .arch-flow span{padding:10px 16px;border:1px solid rgba(177,242,204,.3);border-radius:100px;font:11px 'Space Mono',monospace;letter-spacing:.08em;color:#e8f1ed}
 .arch-flow i{width:20px;height:1px;background:rgba(177,242,204,.4)}
-.arch-modules{display:grid;gap:2rem;margin-top:3rem}
-.arch-module{display:grid;grid-template-columns:50px 1fr;gap:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(177,242,204,.12)}
-.arch-module-n{font:500 1.6rem 'Space Grotesk',sans-serif;color:rgba(170,236,196,.4)}
-.arch-module h3{display:flex;align-items:center;gap:12px;font:500 1.15rem 'Space Grotesk',sans-serif;color:#f0f8f2;margin:0 0 8px}
+/* Six flashcards, not six paragraphs stacked under divider lines — each
+   module gets its own bordered box so the "6 modules, 1 pipeline" framing
+   in the heading actually reads as 6 distinct things at a glance. */
+.arch-modules{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.arch-module{display:flex;flex-direction:column;padding:1.75rem;border:1px solid rgba(177,242,204,.16);border-radius:16px;background:rgba(255,255,255,.014)}
+.arch-module-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem}
+.arch-module-n{font:600 1.5rem 'Space Grotesk',sans-serif;color:rgba(170,236,196,.3);letter-spacing:-.02em}
+.arch-module h3{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font:600 1.05rem 'Space Grotesk',sans-serif;color:#f0f8f2;margin:0 0 .75rem}
+.arch-module .body-copy{margin:0;font-size:13.5px;line-height:1.65}
 .arch-status{background:rgba(159,240,191,.1);color:#9ff0bf;font-size:9px}
+@media(max-width:1080px){.arch-modules{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.arch-modules{grid-template-columns:1fr}}
 .sim-chart{margin-top:1.5rem;border:1px solid rgba(177,242,204,.18);border-radius:16px;padding:1.5rem}
 .sim-legend{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1rem;font:10px 'Space Mono',monospace;color:#a5b7ae}
 .sim-legend span{display:flex;align-items:center;gap:8px}
 .sim-dot{display:inline-block;width:9px;height:9px;border-radius:50%}
-@media(max-width:760px){.bench-row{grid-template-columns:1fr 1fr;row-gap:4px}.bench-history-item,.arch-module{grid-template-columns:36px 1fr}}
+@media(max-width:760px){.bench-row{grid-template-columns:1fr 1fr;row-gap:4px}.bench-flow-card{width:260px}}
 
 /* --- Architecture diagrams & icons --- */
-.diagram-frame{margin-top:2rem;border:1px solid rgba(177,242,204,.18);border-radius:16px;padding:1.5rem;background:rgba(255,255,255,.012)}
+/* overflow-x:auto + a floor on the SVG's width — below a certain
+   container width these diagrams' fixed-viewBox text (14px/11px "user
+   units") scales down past legible, most severely on the wide/short
+   serving diagram on a phone-width screen. Scrolling horizontally at a
+   readable floor size beats shrinking the labels into illegibility. */
+.diagram-frame{margin-top:2rem;border:1px solid rgba(177,242,204,.18);border-radius:16px;padding:1.5rem;background:rgba(255,255,255,.012);overflow-x:auto}
 .diagram-frame--compact{margin-top:1.5rem}
-.pipeline-diagram{width:100%;height:auto;display:block}
+.pipeline-diagram{width:100%;min-width:560px;height:auto;display:block}
 .pd-title{font:700 14px 'Space Mono',monospace;letter-spacing:.06em;fill:#f0f8f2}
 .pd-title--bad{fill:#f2a89c}
 .pd-sub{font:11px 'Space Mono',monospace;letter-spacing:.06em;fill:#b9c7c0}
 .pd-caption{font:10.5px 'Space Mono',monospace;letter-spacing:.08em;fill:#8a9b93}
 .pd-caption--bad{fill:#e0958a}
 .pd-caption--good{fill:#8ff0b6}
-.arch-module{grid-template-columns:44px 1fr}
 .arch-module-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#e8f1ed}
 .arch-module-icon--good{background:rgba(143,240,182,.1);color:#8ff0b6}
 .arch-module-icon--warn{background:rgba(240,204,123,.1);color:#f0cc7b}
@@ -162,14 +255,14 @@
 @media(max-width:760px){.pd-title{font-size:10px}.pd-sub{font-size:8.5px}.pd-caption{font-size:8px}}
 
 /* --- Nav active state: a real shared-element indicator (framer-motion
-   layoutId), not a per-link static underline -- it glides between tabs
+   layoutId), not a per-link static underline — it glides between tabs
    on route change instead of just appearing/disappearing. --- */
 .desktop-nav a{position:relative}
 .desktop-nav a.active{color:#56c7ff;opacity:1}
 .nav-indicator{position:absolute;left:0;right:0;bottom:-8px;height:1px;background:#56c7ff;box-shadow:0 0 8px rgba(86,199,255,.6)}
 
 /* --- Header material: a translucent layer content scrolls under, not an
-   opaque bar -- Apple's materials guidance (blur + slight tint, brighter
+   opaque bar — Apple's materials guidance (blur + slight tint, brighter
    top edge catching light). --- */
 .site-header{backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.06)}
 
@@ -181,21 +274,29 @@
 .line-link:active{transform:scale(.98)}
 .menu-button:active{opacity:.6}
 /* transform is owned by Framer Motion (Screening.tsx's drag-over/tap
-   springs) -- only non-transform properties transition in CSS. */
+   springs) — only non-transform properties transition in CSS. */
 .dropzone{transition:border-color .25s ease,background .25s ease}
 
 @media(prefers-reduced-motion:reduce){.nav-indicator{transition:none!important}}
 
 /* --- Card hover treatment --- */
 /* transform/y is owned by Framer Motion (ResultDisplay.tsx's whileHover/
-   whileTap springs) -- only non-transform properties transition in CSS,
+   whileTap springs) — only non-transform properties transition in CSS,
    so the two systems never fight over the same property. */
+/* Spring-approximating easing (cubic-bezier(.16,1,.3,1)) throughout, same
+   curve the buttons already use -- a hover isn't a gesture (no drag/flick
+   to hand off velocity to), so a CSS transition is the right tool per the
+   skill's own guidance; it just needs the same curve family as everything
+   else so the whole page reads as one consistent hand, not several. */
 .result-card{transition:border-color .25s ease,box-shadow .25s ease}
 .result-card:hover{border-color:rgba(177,242,204,.4);box-shadow:0 12px 32px rgba(0,0,0,.28)}
-.case-block{transition:border-color .25s ease}
-.case-block:hover{border-top-color:rgba(177,242,204,.4)}
-.arch-module{transition:border-color .25s ease,padding-left .25s ease}
-.arch-module:hover{border-top-color:rgba(177,242,204,.4);padding-left:6px}
+.case-block{transition:border-color .3s cubic-bezier(.16,1,.3,1)}
+.case-block:hover{border-color:rgba(177,242,204,.4)}
+.arch-module,.kpi-card,.notes-card{transition:border-color .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s cubic-bezier(.16,1,.3,1)}
+.arch-module:hover,.kpi-card:hover,.notes-card:hover{border-color:rgba(177,242,204,.4);transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.24)}
+.bench-flow-card{transition:border-color .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1)}
+.bench-flow-card:hover{border-color:var(--tone);transform:translateY(-3px)}
+@media(prefers-reduced-motion:reduce){.arch-module:hover,.kpi-card:hover,.notes-card:hover,.bench-flow-card:hover{transform:none}}
 
 /* --- Status legend --- */
 .status-legend{display:flex;flex-wrap:wrap;gap:1.5rem;margin:1rem 0 1.5rem;font:10px 'Space Mono',monospace;color:#a5b7ae}

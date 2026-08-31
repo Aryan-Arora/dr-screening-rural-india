@@ -1,7 +1,7 @@
 import type { ScreeningResult } from '../types/screening'
 
 // The bridge server runs separately (bridge-server/, `npm start`, port 4000)
-// -- this is a real HTTP call, not a mock. Overridable via VITE_API_BASE_URL
+// — this is a real HTTP call, not a mock. Overridable via VITE_API_BASE_URL
 // for anyone running the bridge server on a different host/port.
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:4000'
 
@@ -44,7 +44,7 @@ export function outputUrl(path: string | null): string | null {
   return path.startsWith('http') ? path : `${API_BASE_URL}${path}`
 }
 
-/** Fetches a previously-analyzed result by job ID -- the bridge server
+/** Fetches a previously-analyzed result by job ID — the bridge server
  *  writes each job's normalized result.json into its output directory
  *  (see analyze.js), served statically, so this is a real lookup of a
  *  real past pipeline run, not a mock or a client-side cache. */
@@ -53,7 +53,7 @@ export async function fetchResultById(jobId: string): Promise<ScreeningResult> {
   if (!response.ok) {
     throw new ApiError(
       response.status === 404
-        ? `No result found for "${jobId}" -- the job may not exist, or the bridge server's outputs were cleared.`
+        ? `No result found for "${jobId}" — the job may not exist, or the bridge server's outputs were cleared.`
         : `Failed to load result (HTTP ${response.status}).`,
       response.status,
     )

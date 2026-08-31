@@ -23,7 +23,7 @@ export function Landing() {
       gsap.from('.image-copy', { y: 70, opacity: 0, scrollTrigger: { trigger: '.image-story', start: 'top 72%', end: 'top 36%', scrub: true } })
       // The big fixed background visual (covers the whole page) should
       // stay present as ambient atmosphere for the sections further down
-      // -- it was only ever a problem in this ONE section, where it
+      // — it was only ever a problem in this ONE section, where it
       // visually collided with the retina-frame's own content sitting
       // right on top of it. So dip it down specifically while
       // .image-story is in view, then bring it back up once past it,
@@ -31,12 +31,12 @@ export function Landing() {
       gsap.timeline({ scrollTrigger: { trigger: '.image-story', start: 'top bottom', end: 'bottom top', scrub: true } })
         .fromTo('.retinal-universe', { opacity: 1 }, { opacity: .12, ease: 'none' })
         .to('.retinal-universe', { opacity: 1, ease: 'none' })
-      // A clean circular reveal, not a particle dissolve -- the compact
+      // A clean circular reveal, not a particle dissolve — the compact
       // visual underneath stays fully-formed the whole time (phase 0,
       // never dissolves), and the FRAME itself opens up via clip-path as
       // you scroll. This can't look glitchy the way overlapping particle
       // fields can (the frame's own scatter was visibly colliding with
-      // the fixed full-page hero visual behind it) -- it's a single,
+      // the fixed full-page hero visual behind it) — it's a single,
       // unambiguous wipe. The scanline still sweeps once across the
       // revealed image as confirmation/detail, same as before.
       gsap.fromTo('.retina-frame',

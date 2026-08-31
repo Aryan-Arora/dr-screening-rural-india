@@ -2,7 +2,7 @@
  * Mirrors the bridge server's real response shape exactly
  * (bridge-server/routes/analyze.js + matlab/scripts/run_pipeline.m).
  * Every field the pipeline hasn't implemented yet is genuinely `null` at
- * runtime (MATLAB's [] gets normalized to null server-side) -- never
+ * runtime (MATLAB's [] gets normalized to null server-side) — never
  * fabricate a fallback value for these in the UI, render an honest
  * "not available" state instead. This is a house rule for this project,
  * not a stylistic preference.
@@ -96,7 +96,7 @@ export interface ScreeningResult {
   report_url: string | null
   vascular_risk: VascularRisk | null
   /** Only present once a result has actually gone through the live
-   *  /api/analyze endpoint -- pre-computed Cases-page results don't have
+   *  /api/analyze endpoint — pre-computed Cases-page results don't have
    *  a real job on the bridge server, so this stays undefined for them. */
   jobId?: string
 }

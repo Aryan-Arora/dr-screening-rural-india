@@ -1,6 +1,6 @@
 /**
  * The real control flow of run_pipeline.m, drawn to scale with what
- * actually happens -- including the two branches that are easy to miss
+ * actually happens — including the two branches that are easy to miss
  * in a plain left-to-right list: a rejected-quality image stops the
  * chain early (never reaches the CNN), and Module 6 runs in parallel off
  * Module 1/2's output rather than after Module 4.
@@ -62,7 +62,7 @@ export function PipelineDiagram() {
       <line x1={685} y1={280} x2={685} y2={306} stroke="rgba(177,242,204,.4)" strokeWidth={1.3} markerEnd="url(#arrow)" />
       <rect x={510} y={314} width={350} height={62} rx={12} fill="rgba(159,240,191,.04)" stroke="rgba(159,240,191,.4)" strokeWidth={1.2} />
       <text x={685} y={340} textAnchor="middle" className="pd-title">06 · VASCULAR / CEREBROVASCULAR RISK</text>
-      <text x={685} y={358} textAnchor="middle" className="pd-sub">RUNS IN PARALLEL -- INDEPENDENT OF 03/04</text>
+      <text x={685} y={358} textAnchor="middle" className="pd-sub">RUNS IN PARALLEL — INDEPENDENT OF 03/04</text>
 
       <text x={10} y={392} className="pd-caption">SOLID = MAIN DR-GRADING CHAIN</text>
       <text x={280} y={392} className="pd-caption pd-caption--bad">DASHED = EARLY EXIT</text>

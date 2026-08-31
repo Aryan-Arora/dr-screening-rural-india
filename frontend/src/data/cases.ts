@@ -3,7 +3,7 @@ import type { ScreeningResult } from '../types/screening'
 /**
  * Pre-computed, real pipeline outputs for 3 real fundus photos
  * (originally from ~/Desktop/dr_screening_test_images/, captured by
- * running them through the actual bridge server -- not fabricated, not
+ * running them through the actual bridge server — not fabricated, not
  * hand-typed). Deliberately static rather than fetched live: this page
  * exists specifically so the demo has a reliable fallback that doesn't
  * depend on the bridge server being up or a live upload going smoothly
@@ -12,7 +12,7 @@ import type { ScreeningResult } from '../types/screening'
  *
  * Refreshed 2026-08-29 after the APTOS-only 3-backbone retrain finished
  * and was calibrated (95.5% referable sensitivity / 90.8% specificity,
- * both PRD targets met) -- severity/Grad-CAM are now real trained-model
+ * both PRD targets met) — severity/Grad-CAM are now real trained-model
  * output, not the earlier "models not ready yet" nulls.
  */
 
@@ -27,7 +27,7 @@ export const cases: Case[] = [
   {
     slug: 'referable',
     title: 'Referable Case',
-    caption: 'A real fundus photo with visible lesions -- demonstrates lesion detection and the full vascular-risk side-pipeline on a genuinely pathological image.',
+    caption: 'A real fundus photo with visible lesions — demonstrates lesion detection and the full vascular-risk side-pipeline on a genuinely pathological image.',
     result: {
       quality_check: {
         status: 'enhanced',
@@ -69,7 +69,7 @@ export const cases: Case[] = [
   {
     slug: 'healthy',
     title: 'Healthy Case',
-    caption: 'A clean, gradable capture with no significant lesions -- shows the pipeline correctly staying quiet rather than crying wolf on a healthy image.',
+    caption: 'A clean, gradable capture with no significant lesions — shows the pipeline correctly staying quiet rather than crying wolf on a healthy image.',
     result: {
       quality_check: {
         status: 'accepted',
@@ -111,7 +111,7 @@ export const cases: Case[] = [
   {
     slug: 'rejected',
     title: 'Rejected-Quality Case',
-    caption: 'A genuinely poor capture (illumination + field-of-view issues) -- the quality gate correctly stops the pipeline here instead of feeding an ungradable image to the CNN and fabricating a result.',
+    caption: 'A genuinely poor capture (illumination + field-of-view issues) — the quality gate correctly stops the pipeline here instead of feeding an ungradable image to the CNN and fabricating a result.',
     result: {
       quality_check: {
         status: 'rejected',

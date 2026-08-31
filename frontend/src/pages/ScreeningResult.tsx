@@ -10,7 +10,7 @@ type LoadState = 'loading' | 'done' | 'error'
 
 /**
  * A real, shareable permalink for one past pipeline run
- * (/screening/result/:id) -- fetches the bridge server's saved
+ * (/screening/result/:id) — fetches the bridge server's saved
  * result.json for that job ID rather than relying on in-memory state
  * from the Screening page, so the link keeps working after a refresh
  * or if shared with someone else on the same network.
@@ -19,7 +19,7 @@ export function ScreeningResultPage() {
   const { id } = useParams<{ id: string }>()
   // Keyed by id so navigating between two different result permalinks
   // (same route, different param) gets a clean remount instead of
-  // reusing state from the previous id -- avoids resetting state
+  // reusing state from the previous id — avoids resetting state
   // synchronously inside an effect just to handle that transition.
   return id ? <ResultLoader key={id} id={id} /> : null
 }
@@ -44,7 +44,7 @@ function ResultLoader({ id }: { id: string }) {
         <p className="eyebrow">SCREENING RESULT / {id}</p>
         <h2>PIPELINE <em>RESULT.</em></h2>
         <p className="body-copy">
-          A permalink to one real pipeline run -- reloadable and shareable, backed by the bridge
+          A permalink to one real pipeline run — reloadable and shareable, backed by the bridge
           server's saved result for this job, not local browser state.
         </p>
       </header>

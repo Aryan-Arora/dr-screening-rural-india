@@ -8,8 +8,8 @@ export function Simulation() {
         <p className="eyebrow">DISTRICT SIMULATION</p>
         <h2>WHERE DOES THIS <em>ACTUALLY BREAK?</em></h2>
         <p className="body-copy">
-          A real Simulink discrete-event model of the clinic workflow -- patient arrival, quality-
-          gate capture/recapture, AI processing queue, doctor review queue -- swept across annual
+          A real Simulink discrete-event model of the clinic workflow — patient arrival, quality-
+          gate capture/recapture, AI processing queue, doctor review queue — swept across annual
           patient volume from 100k to 1.5M. Not a mockup chart: this is the actual output of
           <code> module5_sweep_results.mat</code>.
         </p>
@@ -42,22 +42,28 @@ export function Simulation() {
 
       <section className="bench-section">
         <p className="eyebrow">THE FINDING</p>
-        <p className="body-copy" style={{ maxWidth: 720, fontSize: 16, lineHeight: 1.8 }}>
-          At 1.5M patients/year with a single AI processing slot, AI utilization reaches{' '}
-          <b style={{ color: '#f2a89c' }}>86.7%</b> -- approaching the saturation point where
-          queueing theory says wait times explode nonlinearly. Doctor utilization, meanwhile,
-          never exceeds <b style={{ color: '#f0cc7b' }}>52.2%</b> even with just a single doctor at
-          that same volume, because only ~10% of patients are referable and actually need review.
-          A second AI slot keeps utilization comfortable (<b style={{ color: '#8ff0b6' }}>43.3%</b>{' '}
-          at the highest volume tested.
-        </p>
+        <div className="finding-card">
+          <p className="finding-text">
+            Push volume to 1.5M patients a year on a single AI processing slot and that slot is the
+            one that buckles first: utilization climbs to <span className="stat-highlight stat-highlight--rose">86.7%</span>,
+            the zone where queueing theory says wait times stop scaling and start exploding. The
+            ophthalmologist queue never comes close — <span className="stat-highlight stat-highlight--amber">52.2%</span> utilization
+            even with a single doctor on staff, because only around one in ten patients screened
+            is actually referable. Add a second AI slot and the bottleneck disappears: utilization
+            settles back to a comfortable <span className="stat-highlight stat-highlight--mint">43.3%</span> at
+            that same peak volume.
+          </p>
+          <p className="finding-takeaway">
+            <b>The counter-intuitive part:</b> past roughly 600k-1M patients a year, the district's
+            money is better spent on AI compute capacity than on hiring more ophthalmologists —
+            the opposite of where intuition points first.
+          </p>
+        </div>
         <p className="caveat" style={{ marginTop: '1.5rem' }}>
-          Concrete, counter-intuitive recommendation: for district-scale growth beyond ~600k-1M
-          patients/year, prioritize AI compute capacity over ophthalmologist headcount -- the
-          opposite of where intuition points first. All simulation parameters (15% field-capture
-          reject rate, 10% referable prevalence, 5-second AI processing time for a warm production
-          service) are stated literature/estimate-based assumptions, not measurements from this
-          project's own data -- see the model's source for exactly which is which.
+          All simulation parameters (15% field-capture reject rate, 10% referable prevalence,
+          5-second AI processing time for a warm production service) are stated literature/
+          estimate-based assumptions, not measurements from this project's own data — see the
+          model's source for exactly which is which.
         </p>
       </section>
     </div>

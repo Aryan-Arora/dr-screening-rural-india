@@ -26,7 +26,7 @@ export function ServingDiagram() {
         const next = nodes[i + 1]
         return <line key={i} x1={n.x + n.w} y1={y + h / 2} x2={next.x - 2} y2={y + h / 2} stroke="rgba(177,242,204,.55)" strokeWidth={1.3} markerEnd="url(#arrow2)" />
       })}
-      <text x={460} y={y + h + 22} textAnchor="middle" className="pd-caption">~7-25s PER REQUEST -- MATLAB STARTUP + MODEL LOAD, PAID EVERY TIME</text>
+      <text x={460} y={y + h + 22} textAnchor="middle" className="pd-caption">~7-25s PER REQUEST — MATLAB STARTUP + MODEL LOAD, PAID EVERY TIME</text>
     </svg>
   )
 }

@@ -67,7 +67,7 @@ export function RetinalVisual({ className = '', compact = false, story = false }
       const edge = Math.sqrt(x * x + (y / .92) ** 2)
       if (edge > 1.02) { x /= edge / 1.02; y /= edge / 1.02 }
       const tones = kind === 'vessel' || kind === 'disc' ? 4 : kind === 'macula' ? 3 : 5
-      // Sizes bumped substantially (2.5-3x the original) -- at the original
+      // Sizes bumped substantially (2.5-3x the original) — at the original
       // scale, individual points read as dust rather than a legible fundus;
       // real vessel lines get their continuity from the branch-stroke pass
       // in draw() below, not from dot density alone.
@@ -77,7 +77,7 @@ export function RetinalVisual({ className = '', compact = false, story = false }
 
     // Group vessel particles by branch, ordered root-to-tip by t, so draw()
     // can stroke a continuous line through each branch instead of relying on
-    // isolated dots to imply a vessel -- this is what actually makes it read
+    // isolated dots to imply a vessel — this is what actually makes it read
     // as vasculature rather than a particle cloud.
     const branchGroups = new Map<number, Particle[]>()
     for (const p of particles) {
@@ -90,12 +90,12 @@ export function RetinalVisual({ className = '', compact = false, story = false }
 
     let width = 1, height = 1, ratio = 1, frame = 0
     let pointer = { x: -9999, y: -9999, active: false }
-    // offsetWidth/offsetHeight, not getBoundingClientRect() -- the host
+    // offsetWidth/offsetHeight, not getBoundingClientRect() — the host
     // carries a CSS `transform: scale(...)` inside .retina-frame and the
     // compact lesion/explain visuals, and getBoundingClientRect() reports
     // that *post*-transform box. Sizing the canvas off it, then having the
     // very same ancestor transform apply a second time to the canvas as its
-    // descendant, compounds the scale -- the canvas renders ~1.25x too big
+    // descendant, compounds the scale — the canvas renders ~1.25x too big
     // from its center and its content is pushed outside the frame's
     // overflow:hidden clip. offsetWidth/offsetHeight report the untransformed
     // layout box, so the canvas is sized once and scaled once.
@@ -104,7 +104,7 @@ export function RetinalVisual({ className = '', compact = false, story = false }
     const progress = () => { if (!story) return Number.parseFloat(getComputedStyle(host).getPropertyValue('--retina-phase')) || 0; const landing = host.closest('.landing') as HTMLElement | null; return landing ? clamp((-landing.getBoundingClientRect().top) / Math.max(1, landing.offsetHeight - innerHeight)) : 0 }
     const target = (p: Particle, stage: number) => {
       if (p.kind === 'field') return p.field
-      // Dissolve now starts at stage 0 (no dead zone) -- previously the
+      // Dissolve now starts at stage 0 (no dead zone) — previously the
       // first 12% of scroll produced zero visible change, which read as
       // unresponsive. Reform's start point is left alone since that
       // transition wasn't the complaint.
@@ -113,7 +113,7 @@ export function RetinalVisual({ className = '', compact = false, story = false }
       const analysisX = p.base[0] * .93 + (p.kind === 'vessel' ? Math.sin(p.seed * 43) * .075 : 0)
       return [mix(base[0], analysisX, reform), mix(base[1], p.base[1] * .93, reform), mix(base[2], p.base[2] + (p.kind === 'vessel' ? .24 : p.kind === 'disc' ? .12 : -.03), reform)]
     }
-    // Reduced from the original 2x -- at 2x, roughly 30% of the structure
+    // Reduced from the original 2x — at 2x, roughly 30% of the structure
     // (vessel tips especially) projected entirely off-canvas, wasting real
     // density. Tighter projection + a slightly larger base scale keeps the
     // whole fundus visible while still filling most of the frame.
@@ -155,7 +155,7 @@ export function RetinalVisual({ className = '', compact = false, story = false }
         projected.set(p, { x, y, z, alpha })
       }
 
-      // Vessel branch strokes -- continuous curved lines through each
+      // Vessel branch strokes — continuous curved lines through each
       // branch's ordered points, tapering width from root to tip. This is
       // what makes the structure read as vasculature at a glance, rather
       // than needing the viewer to mentally connect scattered dots.
@@ -188,8 +188,8 @@ export function RetinalVisual({ className = '', compact = false, story = false }
       ctx.globalAlpha = 1; frame = requestAnimationFrame(draw)
     }
     // A window resize listener alone misses container size changes that
-    // aren't driven by the viewport -- web font swaps, grid tracks settling,
-    // sibling content loading -- any of which can leave the canvas's cached
+    // aren't driven by the viewport — web font swaps, grid tracks settling,
+    // sibling content loading — any of which can leave the canvas's cached
     // buffer size mismatched with its host's actual box, drawing the scene
     // offset from where the host now sits. A ResizeObserver on the host
     // itself catches all of those, not just viewport resizes.

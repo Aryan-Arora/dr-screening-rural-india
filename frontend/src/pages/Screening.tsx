@@ -37,7 +37,7 @@ export function Screening() {
     try {
       const data = await analyzeImage(file)
       // Redirect to the permalink page rather than showing the result
-      // inline -- the URL itself becomes a real, shareable/revisitable
+      // inline — the URL itself becomes a real, shareable/revisitable
       // link (backed by the bridge server's saved result.json), not just
       // a page in component state that vanishes on refresh.
       if (data.jobId) {
@@ -68,7 +68,7 @@ export function Screening() {
         <p className="body-copy">
           Runs the real pipeline (Module 1-4, plus Module 6's vascular-risk side-pipeline) end to
           end via the bridge server. Every field below is exactly what the pipeline actually
-          returned -- no field is filled in or estimated by the interface.
+          returned — no field is filled in or estimated by the interface.
         </p>
       </header>
 
@@ -85,7 +85,7 @@ export function Screening() {
           onClick={() => inputRef.current?.click()}
           // Rubber-band-flavored feedback: the dropzone leans toward the
           // gesture on drag-over (anticipating the drop) and settles back
-          // critically damped, no overshoot -- this is hover/drop state,
+          // critically damped, no overshoot — this is hover/drop state,
           // not a flick, so it doesn't earn momentum bounce.
           animate={reduceMotion ? {} : { scale: dragOver ? 1.012 : 1 }}
           transition={{ type: 'spring', damping: 1, duration: 0.3 }}
@@ -103,7 +103,7 @@ export function Screening() {
           ) : (
             <>
               {/* Corner brackets read as a capture viewfinder rather than a
-                  generic form dropzone -- a deliberate nod to what's actually
+                  generic form dropzone — a deliberate nod to what's actually
                   being framed here (a fundus photo), not stock upload-icon
                   styling. */}
               <span className="dropzone-corner tl" /><span className="dropzone-corner tr" />
