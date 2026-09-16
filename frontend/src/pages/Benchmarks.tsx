@@ -151,7 +151,7 @@ export function Benchmarks() {
               <Tooltip
                 contentStyle={{ background: '#0a1a14', border: '1px solid rgba(177,242,204,.3)', borderRadius: 8, fontFamily: "'Space Mono', monospace", fontSize: 12 }}
                 labelStyle={{ color: '#e8f1ed', marginBottom: 4 }}
-                formatter={(value: number) => `${value.toFixed(1)}%`}
+                formatter={(value) => `${Number(value).toFixed(1)}%`}
               />
               <Legend wrapperStyle={{ fontFamily: "'Space Mono', monospace", fontSize: 11, paddingTop: 12 }} />
               <ReferenceLine y={90} stroke="#41d4ff" strokeDasharray="4 3" strokeOpacity={.6} label={{ value: 'Sens. target 90%', position: 'insideTopRight', fill: '#41d4ff', fontSize: 10, fontFamily: "'Space Mono', monospace" }} />
