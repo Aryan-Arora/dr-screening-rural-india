@@ -9,7 +9,7 @@ export function Cases() {
         <p className="eyebrow">CLINICAL CASES</p>
         <h2>THREE REAL <em>CASES.</em></h2>
         <p className="body-copy">
-          Real fundus photos, run through the actual pipeline once and captured here — not a
+          Real fundus photos, run through the actual pipeline once and captured here — not a
           live demo dependent on the bridge server being up. Chosen specifically to cover all
           three response shapes the pipeline can return: a referable case, a healthy case, and
           a case the quality gate correctly rejects.

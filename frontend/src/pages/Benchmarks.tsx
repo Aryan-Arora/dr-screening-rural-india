@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle2, ClipboardList } from 'lucide-react'
 import { StatusLegend } from '../components/ui/StatusLegend'
 
 /**
- * Slow, continuous ping-pong auto-scroll through the card track — pauses
+ * Slow, continuous ping-pong auto-scroll through the card track — pauses
  * the instant a pointer/touch enters so it never fights a user actually
  * trying to browse, and does nothing at all under reduced-motion. Ping-pong
  * (reverse direction at each end) rather than snapping back to the start,
@@ -69,37 +69,37 @@ const history = [
   {
     stage: '01',
     title: 'First pilot',
-    detail: '714 images, no class weighting. 57% accuracy, 76-81% sensitivity per backbone — missed the >90% target. Class 2 (the referable boundary) was the universal confusion bottleneck.',
+    detail: '714 images, no class weighting. 57% accuracy, 76-81% sensitivity per backbone — missed the >90% target. Class 2 (the referable boundary) was the universal confusion bottleneck.',
     verdict: 'target missed', tone: 'bad',
   },
   {
     stage: '02',
     title: 'EyePACS blend attempt',
-    detail: 'Added EyePACS (2015 Kaggle competition, same label scale) for volume. Made things WORSE: 60% accuracy on APTOS-only vs. 36% on EyePACS-only within the same blended test set — a real domain gap, not a calibration issue.',
+    detail: 'Added EyePACS (2015 Kaggle competition, same label scale) for volume. Made things WORSE: 60% accuracy on APTOS-only vs. 36% on EyePACS-only within the same blended test set — a real domain gap, not a calibration issue.',
     verdict: 'reverted', tone: 'bad',
   },
   {
     stage: '03',
     title: 'APTOS-only, full pool',
-    detail: '2,930 images, class-weighted loss, all 3 backbones retrained. Naive-argmax ensemble: 82.5% accuracy, 90.5% sensitivity, 95.8% specificity on a 439-image test set — both PRD targets met with real margin, no threshold trick needed. The best naive-argmax result of the project, though a later retrain on the same data + approach (stage 05) landed a few points lower — a real reminder that training is stochastic and single-run point estimates carry noise.',
+    detail: '2,930 images, class-weighted loss, all 3 backbones retrained. Naive-argmax ensemble: 82.5% accuracy, 90.5% sensitivity, 95.8% specificity on a 439-image test set — both PRD targets met with real margin, no threshold trick needed. The best naive-argmax result of the project, though a later retrain on the same data + approach (stage 05) landed a few points lower — a real reminder that training is stochastic and single-run point estimates carry noise.',
     verdict: 'target met', tone: 'good',
   },
   {
     stage: '04',
     title: 'APTOS + IDRiD + DDR blend',
-    detail: '5,434 images (real class-3/4 boost: 474/1,211 vs. 108/164), 5 backbones. Per-source breakdown confirmed the SAME domain-gap pattern as EyePACS: aptos 82.2% vs. ddr 68.1%/idrid 68.0%. Every backbone individually got worse. Ensemble fell to 75.6%/89.3%/93.8% — below the old result and below the PRD sensitivity target.',
+    detail: '5,434 images (real class-3/4 boost: 474/1,211 vs. 108/164), 5 backbones. Per-source breakdown confirmed the SAME domain-gap pattern as EyePACS: aptos 82.2% vs. ddr 68.1%/idrid 68.0%. Every backbone individually got worse. Ensemble fell to 75.6%/89.3%/93.8% — below the old result and below the PRD sensitivity target.',
     verdict: 'regression, reverted', tone: 'bad',
   },
   {
     stage: '05',
     title: 'APTOS-only retrain, 5 backbones',
-    detail: 'Reverted to the proven-good data, kept the 2 new backbones (Xception, InceptionResNetV2) from stage 04 to see if they helped on clean data. Naive-argmax ensemble: 78.8% accuracy, 88.3% sensitivity, 93.8% specificity — recovered most of the regression but still missed the sensitivity target on raw argmax.',
+    detail: 'Reverted to the proven-good data, kept the 2 new backbones (Xception, InceptionResNetV2) from stage 04 to see if they helped on clean data. Naive-argmax ensemble: 78.8% accuracy, 88.3% sensitivity, 93.8% specificity — recovered most of the regression but still missed the sensitivity target on raw argmax.',
     verdict: 'target missed (pre-calibration)', tone: 'warn',
   },
   {
     stage: '06',
     title: 'Post-hoc calibration (both ensemble sizes)',
-    detail: 'Temperature scaling + re-swept referable threshold, no retraining — same technique already proven in stage 03. Both the 5-backbone and the simpler 3-backbone ensemble hit 95.5% sensitivity / 90.8% specificity, exactly identical. Since the 2 extra backbones bought zero accuracy once calibrated, the 3-backbone ensemble is what actually ships in run_pipeline.m.',
+    detail: 'Temperature scaling + re-swept referable threshold, no retraining — same technique already proven in stage 03. Both the 5-backbone and the simpler 3-backbone ensemble hit 95.5% sensitivity / 90.8% specificity, exactly identical. Since the 2 extra backbones bought zero accuracy once calibrated, the 3-backbone ensemble is what actually ships in run_pipeline.m.',
     verdict: 'target met, deployed', tone: 'good',
   },
 ]
@@ -120,7 +120,7 @@ export function Benchmarks() {
       </header>
 
       <section className="bench-section">
-        <p className="eyebrow">PRD TARGETS — CLEARED</p>
+        <p className="eyebrow">PRD TARGETS — CLEARED</p>
         <div className="kpi-grid">
           {kpis.map((k) => (
             <div className="kpi-card" key={k.label}>
@@ -133,7 +133,7 @@ export function Benchmarks() {
         </div>
         <p className="caveat">
           "Referable" = ICDR grade &ge;2 (Moderate NPDR or worse), the clinical threshold for
-          specialist referral — the PRD's actual success metric, not raw 5-class accuracy. Both
+          specialist referral — the PRD's actual success metric, not raw 5-class accuracy. Both
           numbers above are the calibrated 3-backbone ensemble's real held-out test-set result
           (see "Currently Deployed" below), cleared with margin to spare, not the raw naive-argmax
           number.
@@ -164,13 +164,13 @@ export function Benchmarks() {
         <div className="info-note">
           <p>
             439-image held-out test set, fixed seed, class-weighted cross-entropy. The naive-argmax
-            ensemble alone falls short of the sensitivity target — post-hoc temperature scaling and
+            ensemble alone falls short of the sensitivity target — post-hoc temperature scaling and
             a re-swept referable threshold (no retraining, see Methodology below) is what actually
             closes the gap, and is what <code>run_pipeline.m</code> runs in production.
           </p>
           <p>
             A 5-backbone version (adding Xception and InceptionResNetV2) was trained and calibrated
-            separately too — it landed at the exact same 95.5% / 90.8% after calibration, so the
+            separately too — it landed at the exact same 95.5% / 90.8% after calibration, so the
             extra two backbones' inference cost bought nothing. The simpler 3-backbone ensemble
             shown above is what actually ships.
           </p>
@@ -198,7 +198,7 @@ export function Benchmarks() {
             ))}
           </div>
         </div>
-        <p className="scroll-hint">AUTO-SCROLLING — HOVER OR DRAG TO PAUSE</p>
+        <p className="scroll-hint">AUTO-SCROLLING — HOVER OR DRAG TO PAUSE</p>
       </section>
 
       <section className="bench-section">
@@ -209,9 +209,9 @@ export function Benchmarks() {
           </div>
           <ul className="bench-notes">
             <li>Fixed-seed 70/15/15 train/val/test split, shared identically across every backbone so ensembling and per-backbone comparison are valid.</li>
-            <li>Test-time augmentation (4 views per backbone: identity, horizontal flip, ±10° rotation) before ensembling — a genuine variance-reduction technique, not cosmetic.</li>
-            <li>Post-hoc temperature scaling + re-swept referable threshold (no retraining) — needs re-running after every architecture/data change, since it's specific to whichever ensemble is currently trained.</li>
-            <li>CPU-only training throughout — no GPU or Parallel Computing Toolbox in this environment.</li>
+            <li>Test-time augmentation (4 views per backbone: identity, horizontal flip, ±10° rotation) before ensembling — a genuine variance-reduction technique, not cosmetic.</li>
+            <li>Post-hoc temperature scaling + re-swept referable threshold (no retraining) — needs re-running after every architecture/data change, since it's specific to whichever ensemble is currently trained.</li>
+            <li>CPU-only training throughout — no GPU or Parallel Computing Toolbox in this environment.</li>
           </ul>
         </div>
       </section>

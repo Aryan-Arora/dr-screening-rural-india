@@ -1,5 +1,5 @@
 /* Space Grotesk + Space Mono are genuine siblings (both Colophon Foundry,
-   designed as a display/mono pair) — swapped in for DM Mono so the
+   designed as a display/mono pair) — swapped in for DM Mono so the
    technical/label typeface reads as an intentional pairing with the
    display face, not an arbitrary utility monospace. Inter stays for body
    copy, same reasoning (widely-proven, not a "default" tell on its own). */
@@ -10,7 +10,7 @@
 .retinal-cursor{position:fixed;top:0;left:0;width:104px;height:104px;border-radius:50%;pointer-events:none;z-index:100;opacity:0;will-change:transform,opacity;transition:opacity .28s ease;background:radial-gradient(circle at 36% 29%,rgba(255,255,255,.96) 0 2%,rgba(255,255,255,.28) 19%,rgba(255,255,255,.09) 53%,rgba(255,255,255,.24) 100%);border:1px solid rgba(255,255,255,.86);box-shadow:inset 0 0 0 8px rgba(255,255,255,.045),inset 0 0 25px rgba(255,255,255,.16),0 10px 32px rgba(0,0,0,.32),0 0 20px rgba(230,255,244,.18);backdrop-filter:blur(1.5px);mix-blend-mode:screen}.retinal-cursor:before{content:'';position:absolute;inset:9px;border-radius:inherit;border:1px solid rgba(255,255,255,.2)}.retinal-cursor i{position:absolute;top:15px;left:23px;width:27px;height:12px;border-radius:50%;background:linear-gradient(110deg,rgba(255,255,255,.68),transparent);filter:blur(2px);transform:rotate(-26deg)}.retinal-cursor--visible{opacity:1}.retinal-cursor--interactive{box-shadow:inset 0 0 0 8px rgba(255,255,255,.07),inset 0 0 29px rgba(255,255,255,.23),0 12px 37px rgba(0,0,0,.36),0 0 28px rgba(237,255,247,.28)}
 @media (hover:hover) and (pointer:fine){body.retinal-lens-enabled,body.retinal-lens-enabled *{cursor:none!important}}
 @media (hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.retinal-cursor{display:none}}
-:root{font-family:Inter,sans-serif;color:#e8f1ed;background:#030907;font-synthesis:none;text-rendering:optimizeLegibility}*{box-sizing:border-box}html{background:#030907;scroll-behavior:smooth}body{margin:0;overflow-x:hidden;background:#030907}button,a{font:inherit}a{color:inherit;text-decoration:none}.app-shell{min-height:100svh;overflow:clip;background:radial-gradient(circle at 72% 0%,#0c2d24 0,transparent 34%),#030907}.app-shell:before{content:'';pointer-events:none;position:fixed;inset:0;z-index:1;opacity:.13;background-image:linear-gradient(rgba(142,220,183,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(142,220,183,.18) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(#000,transparent 82%)}.site-header{position:fixed;inset:0 0 auto;z-index:20;mix-blend-mode:screen}.site-header-inner{height:92px;max-width:1680px;margin:auto;padding:0 4vw;display:flex;align-items:center;justify-content:space-between}.site-header a{display:flex;align-items:center;gap:12px}.site-header a>div:first-child{width:29px;height:29px;border-radius:100%;border:1px solid rgba(181,255,213,.55);display:grid;place-items:center}.site-header a>div:first-child span{width:6px;height:6px;border-radius:100%;background:#b4ffd5;box-shadow:0 0 12px #b4ffd5}.font-display{font-family:'Space Grotesk',sans-serif}.menu-button{border:0;padding:7px 0;background:none;color:#effff6;cursor:pointer;font:600 13px 'Space Grotesk',sans-serif;letter-spacing:.03em}.menu-button span{margin-left:10px;color:#a1f1c5;font-size:16px}.landing{position:relative}.hero{height:max(760px,100svh);min-height:100svh;position:relative;display:flex;align-items:end;padding:10vh 7vw;isolation:isolate}.hero:after{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 67% 48%,transparent 0 14%,#030907 56%,#030907 100%);pointer-events:none}.hero-copy{position:relative;z-index:3;max-width:690px;padding-bottom:6vh}.eyebrow{margin:0 0 18px;color:#a9ecc4;font:700 11px 'Space Mono',monospace;letter-spacing:.16em}h1,h2,h3{margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#f0f8f2;letter-spacing:-.075em}h1{font-size:clamp(4.2rem,9.1vw,10.5rem);line-height:.82}h2{font-size:clamp(3.5rem,7vw,8.2rem);line-height:.84}h3{font-size:clamp(2rem,4.1vw,4.6rem);line-height:.95}em{font-weight:400;font-style:normal;color:#9ff0bf;text-shadow:0 0 45px rgba(115,238,169,.16)}.hero-description,.body-copy{margin:31px 0 0;max-width:390px;color:#a5b7ae;font-size:15px;line-height:1.65}.line-link{margin-top:31px;display:inline-flex;align-items:center;gap:11px;padding-bottom:9px;border-bottom:1.5px solid #a9ebc6;color:#e9fff2;font:600 14px 'Space Grotesk',sans-serif;letter-spacing:.005em;transition:gap .3s ease,color .3s ease,border-color .3s ease}.line-link:hover{gap:18px;color:#9ff0bf}.retinal-visual{--retina-phase:0;position:relative}.retinal-visual canvas{display:block;width:100%;height:100%}.hero-retina{position:absolute;right:-3vw;top:5vh;width:min(70vw,960px);height:min(82vw,960px);z-index:0;filter:saturate(1.08)}.scroll-cue{position:absolute;right:5vw;bottom:7vh;display:flex;align-items:center;gap:8px;transform:rotate(90deg);transform-origin:right center;color:#769687;font:10px 'Space Mono',monospace;letter-spacing:.16em}.section-shell{max-width:1520px;margin:auto;padding-inline:7vw}.image-story{min-height:105svh;display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:6vw;padding-top:9rem;padding-bottom:9rem}.retina-frame{position:relative;aspect-ratio:1.1;overflow:hidden;border:1px solid rgba(166,237,195,.22);border-radius:50% 50% 47% 53%;background:radial-gradient(circle,#0a3327,#04120e 65%);box-shadow:0 0 100px rgba(29,153,106,.11)}.retina-frame .retinal-visual{width:100%;height:100%;transform:scale(1.25)}/* left/opacity now driven by GSAP ScrollTrigger (Landing.tsx) — a single
+:root{font-family:Inter,sans-serif;color:#e8f1ed;background:#030907;font-synthesis:none;text-rendering:optimizeLegibility}*{box-sizing:border-box}html{background:#030907;scroll-behavior:smooth}body{margin:0;overflow-x:hidden;background:#030907}button,a{font:inherit}a{color:inherit;text-decoration:none}.app-shell{min-height:100svh;overflow:clip;background:radial-gradient(circle at 72% 0%,#0c2d24 0,transparent 34%),#030907}.app-shell:before{content:'';pointer-events:none;position:fixed;inset:0;z-index:1;opacity:.13;background-image:linear-gradient(rgba(142,220,183,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(142,220,183,.18) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(#000,transparent 82%)}.site-header{position:fixed;inset:0 0 auto;z-index:20;mix-blend-mode:screen}.site-header-inner{height:92px;max-width:1680px;margin:auto;padding:0 4vw;display:flex;align-items:center;justify-content:space-between}.site-header a{display:flex;align-items:center;gap:12px}.site-header a>div:first-child{width:29px;height:29px;border-radius:100%;border:1px solid rgba(181,255,213,.55);display:grid;place-items:center}.site-header a>div:first-child span{width:6px;height:6px;border-radius:100%;background:#b4ffd5;box-shadow:0 0 12px #b4ffd5}.font-display{font-family:'Space Grotesk',sans-serif}.menu-button{border:0;padding:7px 0;background:none;color:#effff6;cursor:pointer;font:600 13px 'Space Grotesk',sans-serif;letter-spacing:.03em}.menu-button span{margin-left:10px;color:#a1f1c5;font-size:16px}.landing{position:relative}.hero{height:max(760px,100svh);min-height:100svh;position:relative;display:flex;align-items:end;padding:10vh 7vw;isolation:isolate}.hero:after{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 67% 48%,transparent 0 14%,#030907 56%,#030907 100%);pointer-events:none}.hero-copy{position:relative;z-index:3;max-width:690px;padding-bottom:6vh}.eyebrow{margin:0 0 18px;color:#a9ecc4;font:700 11px 'Space Mono',monospace;letter-spacing:.16em}h1,h2,h3{margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;color:#f0f8f2;letter-spacing:-.075em}h1{font-size:clamp(4.2rem,9.1vw,10.5rem);line-height:.82}h2{font-size:clamp(3.5rem,7vw,8.2rem);line-height:.84}h3{font-size:clamp(2rem,4.1vw,4.6rem);line-height:.95}em{font-weight:400;font-style:normal;color:#9ff0bf;text-shadow:0 0 45px rgba(115,238,169,.16)}.hero-description,.body-copy{margin:31px 0 0;max-width:390px;color:#a5b7ae;font-size:15px;line-height:1.65}.line-link{margin-top:31px;display:inline-flex;align-items:center;gap:11px;padding-bottom:9px;border-bottom:1.5px solid #a9ebc6;color:#e9fff2;font:600 14px 'Space Grotesk',sans-serif;letter-spacing:.005em;transition:gap .3s ease,color .3s ease,border-color .3s ease}.line-link:hover{gap:18px;color:#9ff0bf}.retinal-visual{--retina-phase:0;position:relative}.retinal-visual canvas{display:block;width:100%;height:100%}.hero-retina{position:absolute;right:-3vw;top:5vh;width:min(70vw,960px);height:min(82vw,960px);z-index:0;filter:saturate(1.08)}.scroll-cue{position:absolute;right:5vw;bottom:7vh;display:flex;align-items:center;gap:8px;transform:rotate(90deg);transform-origin:right center;color:#769687;font:10px 'Space Mono',monospace;letter-spacing:.16em}.section-shell{max-width:1520px;margin:auto;padding-inline:7vw}.image-story{min-height:105svh;display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:6vw;padding-top:9rem;padding-bottom:9rem}.retina-frame{position:relative;aspect-ratio:1.1;overflow:hidden;border:1px solid rgba(166,237,195,.22);border-radius:50% 50% 47% 53%;background:radial-gradient(circle,#0a3327,#04120e 65%);box-shadow:0 0 100px rgba(29,153,106,.11)}.retina-frame .retinal-visual{width:100%;height:100%;transform:scale(1.25)}/* left/opacity now driven by GSAP ScrollTrigger (Landing.tsx) — a single
    deliberate sweep synced to scrolling through this section, replacing an
    infinite ambient loop that ran regardless of whether anyone was even
    looking at it. */
@@ -19,7 +19,7 @@
 .flow-node:hover{border-color:rgba(255,183,107,.7);transform:translateX(5px);box-shadow:0 4px 26px rgba(0,0,0,.32),inset 0 0 26px rgba(227,140,60,.12)}
 /* Each node reads as a small optic disc: a radial glow standing in for the
    disc itself, ringed the way the real fundus renders it, rather than a
-   generic numbered badge — ties the chart back to the retina motif instead
+   generic numbered badge — ties the chart back to the retina motif instead
    of looking like a bolted-on generic UI component. */
 .flow-index{position:relative;width:22px;height:22px;flex-shrink:0;border-radius:50%;background:radial-gradient(circle at 38% 34%,#fff0ad,#ffd45c 46%,#c96513 82%);box-shadow:0 0 14px rgba(255,180,60,.55),inset 0 0 6px rgba(120,50,10,.4)}
 .flow-index:before{content:'';position:absolute;inset:-5px;border-radius:50%;border:1px dashed rgba(255,183,107,.4)}
@@ -44,7 +44,7 @@
 
 /* --- Screening page --- */
 .screening-page{padding-top:11rem;padding-bottom:8rem;min-height:100svh}
-/* A viewfinder, not a generic file-upload dropzone — corner brackets
+/* A viewfinder, not a generic file-upload dropzone — corner brackets
    frame the capture area the way a camera would, and a slow scanning
    sweep implies the surface is actively watching for a photo, rather
    than sitting there as an inert dashed-border form control. */
@@ -74,7 +74,7 @@
 .result-grid{margin-top:3rem;display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
 /* Each result card carries its own category accent (a top edge + a faint
    tint) rather than every card in the grid sharing one identical flat
-   border — the uniform-rounded-rect-with-1px-border look is the single
+   border — the uniform-rounded-rect-with-1px-border look is the single
    most common "AI-generated dashboard" tell, and there's real category
    structure here (quality/severity/lesion/vascular/images) worth making
    visible at a glance instead of flattening it into sameness. */
@@ -127,7 +127,7 @@
 /* --- Benchmarks / Architecture / Simulation pages --- */
 .benchmarks-page,.architecture-page,.simulation-page{padding-top:11rem;padding-bottom:8rem;min-height:100svh}
 .bench-section{margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid rgba(177,242,204,.15)}
-/* A callout, not a plain paragraph — this is the one sentence on the page
+/* A callout, not a plain paragraph — this is the one sentence on the page
    meant to be read even by someone skimming, so it gets the visual weight
    to match (accent bar, larger serif-adjacent display type, stats pulled
    out as chips) instead of sitting in body-copy at the same size as
@@ -140,7 +140,7 @@
 .stat-highlight--rose{color:#ffb6a8;background:rgba(242,168,156,.14)}
 .stat-highlight--amber{color:#ffdc9c;background:rgba(240,204,123,.14)}
 .stat-highlight--mint{color:#a6f3c4;background:rgba(143,240,182,.14)}
-/* KPI achievement cards, not a plain target-threshold list — these two
+/* KPI achievement cards, not a plain target-threshold list — these two
    numbers are the project's headline result (PRD targets cleared with real
    margin), so they get the "we did a great job" treatment: a checkmark
    verdict, a big number, and the target it beat shown right alongside it. */
@@ -154,30 +154,30 @@
 .kpi-compare{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:1.1rem;padding-top:.9rem;border-top:1px dashed rgba(94,221,153,.25);font:11px 'Space Mono',monospace;letter-spacing:.06em;color:#8ba396}
 .kpi-delta{color:#8ff0b6;font-weight:700}
 @media(max-width:760px){.kpi-grid{grid-template-columns:1fr}}
-/* An actual bar chart, not a text table — proportional fills make the
+/* An actual bar chart, not a text table — proportional fills make the
    ensemble's improvement over any single backbone visible at a glance
    instead of requiring the reader to compare numeral strings column by
    column. */
 .bench-chart{margin-top:1.5rem;padding:1.5rem 1.25rem .75rem;border:1px solid rgba(177,242,204,.16);border-radius:16px;background:rgba(255,255,255,.012)}
 /* A quiet informational note, distinct from the achievement-styled KPI/
-   finding callouts — this one is methodology detail, not a headline
+   finding callouts — this one is methodology detail, not a headline
    result, so it reads as reference material rather than competing for the
    same visual attention. */
 .info-note{margin-top:1.25rem;padding:1.25rem 1.5rem;border-left:2px solid rgba(165,183,174,.35);background:rgba(255,255,255,.014);border-radius:0 10px 10px 0}
 .info-note p{margin:0;font-size:13px;line-height:1.75;color:#a5b7ae}
 .info-note p+p{margin-top:.85rem}
-/* The training history reads as what it actually is — a sequence of
-   attempts with real outcomes, some of them dead ends — so it gets an
+/* The training history reads as what it actually is — a sequence of
+   attempts with real outcomes, some of them dead ends — so it gets an
    actual connected flowchart (a colored node + line per stage) instead of
    a flat list, with the connecting line itself carrying the tone of the
    stage it leads away from, so a green segment running into a red one
    reads as "this is where it broke" at a glance, before reading a word of
    the copy. */
-/* A horizontal scroller, not a vertical wall of text — each stage is a
+/* A horizontal scroller, not a vertical wall of text — each stage is a
    card you flick through, arrows between them keep the sequence legible,
    and the tone color still carries the same "this is where it broke /
    recovered" signal as before, just per-card instead of per-line-segment. */
-/* No scroll-snap here — it fights programmatic scrollLeft writes (the
+/* No scroll-snap here — it fights programmatic scrollLeft writes (the
    browser re-snaps to the nearest align point every frame), which silently
    defeated the auto-scroll entirely: it does not fail, it just gets reset
    to 0 before you can read the drift. Auto-scroll owns this container's
@@ -198,7 +198,7 @@
 .bench-verdict--good{background:rgba(94,221,153,.15);color:#8ff0b6}
 .bench-verdict--bad{background:rgba(233,109,94,.15);color:#f2a89c}
 .bench-verdict--pending,.bench-verdict--warn{background:rgba(240,204,123,.15);color:#f0cc7b}
-/* A closing reference card, not a bare eyebrow + list — and real bullet
+/* A closing reference card, not a bare eyebrow + list — and real bullet
    markers, since Tailwind's preflight strips native <ul> list-style
    entirely, which is why these were rendering as unmarked lines before. */
 .notes-card{padding:1.75rem 2rem;border:1px solid rgba(177,242,204,.16);border-radius:16px;background:rgba(255,255,255,.014)}
@@ -211,7 +211,7 @@
 .arch-flow{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:1.5rem}
 .arch-flow span{padding:10px 16px;border:1px solid rgba(177,242,204,.3);border-radius:100px;font:11px 'Space Mono',monospace;letter-spacing:.08em;color:#e8f1ed}
 .arch-flow i{width:20px;height:1px;background:rgba(177,242,204,.4)}
-/* Six flashcards, not six paragraphs stacked under divider lines — each
+/* Six flashcards, not six paragraphs stacked under divider lines — each
    module gets its own bordered box so the "6 modules, 1 pipeline" framing
    in the heading actually reads as 6 distinct things at a glance. */
 .arch-modules{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
@@ -230,7 +230,7 @@
 @media(max-width:760px){.bench-row{grid-template-columns:1fr 1fr;row-gap:4px}.bench-flow-card{width:260px}}
 
 /* --- Architecture diagrams & icons --- */
-/* overflow-x:auto + a floor on the SVG's width — below a certain
+/* overflow-x:auto + a floor on the SVG's width — below a certain
    container width these diagrams' fixed-viewBox text (14px/11px "user
    units") scales down past legible, most severely on the wide/short
    serving diagram on a phone-width screen. Scrolling horizontally at a
@@ -255,14 +255,14 @@
 @media(max-width:760px){.pd-title{font-size:10px}.pd-sub{font-size:8.5px}.pd-caption{font-size:8px}}
 
 /* --- Nav active state: a real shared-element indicator (framer-motion
-   layoutId), not a per-link static underline — it glides between tabs
+   layoutId), not a per-link static underline — it glides between tabs
    on route change instead of just appearing/disappearing. --- */
 .desktop-nav a{position:relative}
 .desktop-nav a.active{color:#56c7ff;opacity:1}
 .nav-indicator{position:absolute;left:0;right:0;bottom:-8px;height:1px;background:#56c7ff;box-shadow:0 0 8px rgba(86,199,255,.6)}
 
 /* --- Header material: a translucent layer content scrolls under, not an
-   opaque bar — Apple's materials guidance (blur + slight tint, brighter
+   opaque bar — Apple's materials guidance (blur + slight tint, brighter
    top edge catching light). --- */
 .site-header{backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.06)}
 
@@ -274,14 +274,14 @@
 .line-link:active{transform:scale(.98)}
 .menu-button:active{opacity:.6}
 /* transform is owned by Framer Motion (Screening.tsx's drag-over/tap
-   springs) — only non-transform properties transition in CSS. */
+   springs) — only non-transform properties transition in CSS. */
 .dropzone{transition:border-color .25s ease,background .25s ease}
 
 @media(prefers-reduced-motion:reduce){.nav-indicator{transition:none!important}}
 
 /* --- Card hover treatment --- */
 /* transform/y is owned by Framer Motion (ResultDisplay.tsx's whileHover/
-   whileTap springs) — only non-transform properties transition in CSS,
+   whileTap springs) — only non-transform properties transition in CSS,
    so the two systems never fight over the same property. */
 /* Spring-approximating easing (cubic-bezier(.16,1,.3,1)) throughout, same
    curve the buttons already use -- a hover isn't a gesture (no drag/flick

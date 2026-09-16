@@ -21,9 +21,12 @@ matlab/scripts/slprj/
 bridge-server/node_modules/
 bridge-server/uploads/*
 bridge-server/outputs/*
+bridge-server/queue/*
 !bridge-server/uploads/.gitkeep
 !bridge-server/outputs/.gitkeep
+!bridge-server/queue/.gitkeep
 bridge-server/server.log
+bridge-server/shutdown.flag
 
 # macOS
 .DS_Store

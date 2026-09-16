@@ -6,7 +6,7 @@ const ICDR_LABELS = ['No DR', 'Mild NPDR', 'Moderate NPDR', 'Severe NPDR', 'Prol
 
 /**
  * Shared with both the live Screening workspace and the pre-computed
- * Cases gallery — one rendering path for "what did the pipeline
+ * Cases gallery — one rendering path for "what did the pipeline
  * actually return," so the two pages can never drift into showing
  * different things for the same result shape.
  */
@@ -15,7 +15,7 @@ export function ResultDisplay({ result }: { result: ScreeningResult }) {
   const reduceMotion = useReducedMotion()
 
   // Critically damped (damping 1.0): these cards aren't gesture-driven --
-  // no drag, no flick — so per Apple's guidance they get the graceful,
+  // no drag, no flick — so per Apple's guidance they get the graceful,
   // non-bouncy default, not the momentum-flavored overshoot reserved for
   // things a user physically threw. Reduced motion drops the lift/scale
   // entirely and keeps only the (already CSS-transitioned) border/color
@@ -32,7 +32,7 @@ export function ResultDisplay({ result }: { result: ScreeningResult }) {
       <motion.section className={`result-card result-card--quality${qc.status === 'rejected' ? ' result-card--wide' : ''}`} {...hoverMotion}>
         <h3 className="result-card-title">
           {qc.status === 'rejected' ? <XCircle size={16} /> : <CheckCircle2 size={16} />}
-          IMAGE QUALITY — <span className={`status-tag status-tag--${qc.status}`}>{qc.status.toUpperCase()}</span>
+          IMAGE QUALITY — <span className={`status-tag status-tag--${qc.status}`}>{qc.status.toUpperCase()}</span>
         </h3>
         {qc.reason && <p className="body-copy">{qc.reason}</p>}
         <dl className="score-list">
@@ -62,14 +62,14 @@ export function ResultDisplay({ result }: { result: ScreeningResult }) {
                     {severity.referable ? 'REFERABLE' : 'NON-REFERABLE'}
                   </span>
                 </p>
-                <p className="body-copy">Confidence: {(severity.confidence * 100).toFixed(1)}% — {severity.ensemble_agreement ? 'all backbones agree' : 'backbones disagree'}</p>
+                <p className="body-copy">Confidence: {(severity.confidence * 100).toFixed(1)}% — {severity.ensemble_agreement ? 'all backbones agree' : 'backbones disagree'}</p>
                 {severity.needs_review && (
                   <p className="result-banner result-banner--warning"><AlertTriangle size={14} /> {severity.review_reason}</p>
                 )}
               </>
             ) : (
               <p className="body-copy not-available">
-                Not available — the trained grading models aren't ready yet (a retrain is
+                Not available — the trained grading models aren't ready yet (a retrain is
                 currently running). This is a real, honest null, not a placeholder.
               </p>
             )}
@@ -85,7 +85,7 @@ export function ResultDisplay({ result }: { result: ScreeningResult }) {
                 <div><dt>Neovascularization</dt><dd>{lesions.neovascularization ?? 'not implemented'}</dd></div>
               </dl>
             ) : <p className="body-copy not-available">Not available.</p>}
-            <p className="caveat">Classical CV, first-pass — unvalidated against pixel-level ground truth.</p>
+            <p className="caveat">Classical CV, first-pass — unvalidated against pixel-level ground truth.</p>
           </motion.section>
 
           <motion.section className="result-card result-card--vascular" {...hoverMotion}>
@@ -99,7 +99,7 @@ export function ResultDisplay({ result }: { result: ScreeningResult }) {
                 </dl>
                 <p className="caveat">
                   A screening flag from retinal vessel biomarkers (stroke + vascular-dementia
-                  correlates) — not a diagnosis, and not a test for Alzheimer's or any
+                  correlates) — not a diagnosis, and not a test for Alzheimer's or any
                   amyloid/tau-driven condition.
                 </p>
               </>

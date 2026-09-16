@@ -8,8 +8,8 @@ export function Simulation() {
         <p className="eyebrow">DISTRICT SIMULATION</p>
         <h2>WHERE DOES THIS <em>ACTUALLY BREAK?</em></h2>
         <p className="body-copy">
-          A real Simulink discrete-event model of the clinic workflow — patient arrival, quality-
-          gate capture/recapture, AI processing queue, doctor review queue — swept across annual
+          A real Simulink discrete-event model of the clinic workflow — patient arrival, quality-
+          gate capture/recapture, AI processing queue, doctor review queue — swept across annual
           patient volume from 100k to 1.5M. Not a mockup chart: this is the actual output of
           <code> module5_sweep_results.mat</code>.
         </p>
@@ -47,7 +47,7 @@ export function Simulation() {
             Push volume to 1.5M patients a year on a single AI processing slot and that slot is the
             one that buckles first: utilization climbs to <span className="stat-highlight stat-highlight--rose">86.7%</span>,
             the zone where queueing theory says wait times stop scaling and start exploding. The
-            ophthalmologist queue never comes close — <span className="stat-highlight stat-highlight--amber">52.2%</span> utilization
+            ophthalmologist queue never comes close — <span className="stat-highlight stat-highlight--amber">52.2%</span> utilization
             even with a single doctor on staff, because only around one in ten patients screened
             is actually referable. Add a second AI slot and the bottleneck disappears: utilization
             settles back to a comfortable <span className="stat-highlight stat-highlight--mint">43.3%</span> at
@@ -62,7 +62,7 @@ export function Simulation() {
         <p className="caveat" style={{ marginTop: '1.5rem' }}>
           All simulation parameters (15% field-capture reject rate, 10% referable prevalence,
           5-second AI processing time for a warm production service) are stated literature/
-          estimate-based assumptions, not measurements from this project's own data — see the
+          estimate-based assumptions, not measurements from this project's own data — see the
           model's source for exactly which is which.
         </p>
       </section>
